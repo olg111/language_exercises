@@ -15,6 +15,12 @@ public class Exercises {
     @Column(name = "name")
     private String name;
 
+//
+//    @ManyToOne(cascade = {CascadeType.ALL})
+//    @JoinColumn(name = "topics_id")
+//    private Topics topics;
+
+
     public Exercises() {
     }
 
@@ -36,5 +42,21 @@ public class Exercises {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+//    public Topics getTopics() {
+//        return topics;
+//    }
+//
+//    public void setTopics(Topics topics) {
+//        this.topics = topics;
+//    }
+
+    @Override
+    public String toString() {
+        return "Exercises{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

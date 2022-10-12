@@ -15,7 +15,7 @@
     <c:forEach var="topic" items="${allTop}">
 
           <tr>
-                <td> <a href="/exercisesByTopic/${topic.id}">${topic.name}</a></td>
+                <td> <a href="/ex">${topic.name}</a></td>
           </tr>
 
     </c:forEach>

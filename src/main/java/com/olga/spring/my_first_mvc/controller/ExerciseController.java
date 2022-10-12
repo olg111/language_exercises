@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -21,8 +22,6 @@ public class ExerciseController {
 
     @Autowired
     private ExercisesService exercisesService;
-
-
 
     @RequestMapping("/")
     public String showAllTopics(Model model){
@@ -36,27 +35,29 @@ public class ExerciseController {
     }
 
 
-//    @RequestMapping("/exerciseNames")
-//    public String showExerciseNames(Model model){
-//
-//        List<Exercises> allExerciseNames = exercisesService.getAllExercises();
-//        model.addAttribute("allEx", allExerciseNames);
-//
-//        return "all-exercise-names";
-////         чтобы view мог отобразить значения полей "темы" нужно в методе контроллера создать model
-////          и добавить темы в качестве атрибутов этой модели
-//    }
 
-    @RequestMapping("/exercisesByTopic/{topicId}")
-    public String showExercisesByTopic(@PathVariable int topicId) {
-        System.out.println(topicId);
 
-//
 
-//        Exercises exercises = exercisesService.getAllExercises().get(id);
+
+    @RequestMapping("/ex")
+    public String showAllExercises(Model model) {
+
+        List<Exercises> allExercises = exercisesService.getAllExercises();
+        model.addAttribute("allEx", allExercises);
+        System.out.println("+");
 
         return "all-exercise-names";
     }
+
+
+//    @RequestMapping("/exercisesByTopic")
+//    public String showExercisesByTopic(@RequestParam("empId") int topicId, Model model) {
+//
+//        Exercises exercise = exercisesService.getAllExercises().get(topicId);
+//        model.addAttribute("exercise", exercise);
+//
+//        return "all-exercise-names";
+//    }
 
 
 
