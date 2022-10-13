@@ -14,13 +14,56 @@
 
     <c:forEach var="topic" items="${allTop}">
 
-          <tr>
+
+
+      <c:url var="updateButton" value="/updateInfoTopic">
+            <c:param name="topId" value="${topic.id}"/>
+      </c:url>
+
+      <c:url var="deleteButton" value="/deleteTopic">
+            <c:param name="topId" value="${topic.id}"/>
+      </c:url>
+
+
+
+      <tr>
                 <td> <a href="/ex">${topic.name}</a></td>
-          </tr>
+
+                <td>
+                      <input type="button" value="Update"
+                      onclick="window.location.href = '${updateButton}'"/>
+                </td>
+
+                <td>
+                      <input type="button" value="Delete"
+                      onclick="window.location.href = '${deleteButton}'"/>
+                </td>
+
+
+
+
+
+
+      </tr>
+
+
 
     </c:forEach>
 
 </table>
+
+
+
+<br>
+ <c:url var="addNewTopic" value="/addNewTopic">
+
+ </c:url>
+<input type="button" value="Add"
+    onclick="window.location.href = '${addNewTopic}'"/>
+
+
+
+
 
 </body>
 

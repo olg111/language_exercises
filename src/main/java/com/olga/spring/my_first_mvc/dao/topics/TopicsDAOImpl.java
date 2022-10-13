@@ -29,4 +29,29 @@ public class TopicsDAOImpl implements TopicsDAO {
         List<Topics> allTopics =  query.getResultList();
         return allTopics;
     }
+
+    @Override
+    public void saveTopic(Topics topics) {
+        Session session =sessionFactory.getCurrentSession();
+        session.saveOrUpdate(topics);
+
+
+    }
+
+    @Override
+    public Topics getTopic(int id) {
+        Session session= sessionFactory.getCurrentSession();
+        Topics topics = session.get(Topics.class, id);
+        return topics;
+
+    }
+
+    @Override
+    public void deleteTopic(int id) {
+        Session session= sessionFactory.getCurrentSession();
+        Query<Topics> query = session.createQuery("delete from Topics where id=:topicId");
+        query.setParameter("topicId", id);
+        query.executeUpdate();
+
+    }
 }

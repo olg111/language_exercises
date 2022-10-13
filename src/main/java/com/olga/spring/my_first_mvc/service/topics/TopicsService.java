@@ -7,4 +7,10 @@ import java.util.List;
 public interface TopicsService {
     public List<Topics> getAllTopics();
 
+    public  void saveTopic(Topics topics);
+
+    public Topics getTopic(int id);
+
+    public  void deleteTopic(int id);
+
 }

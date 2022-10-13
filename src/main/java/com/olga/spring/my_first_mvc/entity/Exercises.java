@@ -12,8 +12,12 @@ public class Exercises {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "name")
+    @Column(name = "exercise_name")
     private String name;
+
+    @Column(name = "topic_id")
+    private int topicId;
+
 
 //
 //    @ManyToOne(cascade = {CascadeType.ALL})
@@ -24,8 +28,9 @@ public class Exercises {
     public Exercises() {
     }
 
-    public Exercises(String name) {
+    public Exercises(String name, int topicId) {
         this.name = name;
+        this.topicId = topicId;
     }
 
     public int getId() {
@@ -44,6 +49,14 @@ public class Exercises {
         this.name = name;
     }
 
+    public int getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(int topicId) {
+        this.topicId = topicId;
+    }
+
 //    public Topics getTopics() {
 //        return topics;
 //    }
@@ -52,11 +65,13 @@ public class Exercises {
 //        this.topics = topics;
 //    }
 
+
     @Override
     public String toString() {
         return "Exercises{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", topicId=" + topicId +
                 '}';
     }
 }
