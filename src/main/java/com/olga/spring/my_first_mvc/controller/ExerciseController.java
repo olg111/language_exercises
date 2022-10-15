@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -18,87 +17,68 @@ import java.util.List;
 @Controller
 public class ExerciseController {
 
-    @Autowired
-    private TopicsService topicsService;
 
-    @Autowired
+
+      @Autowired
     private ExercisesService exercisesService;
 
-    @RequestMapping("/")
-    public String showAllTopics(Model model){
+    @RequestMapping("/showExercises")
+    public String showAllExercises(Model model){
 
-        List<Topics> allTopics =topicsService.getAllTopics();
-        model.addAttribute("allTop", allTopics);
+        List<Exercises> allExercises =exercisesService.getAllExercises();
+        model.addAttribute("allEx", allExercises);
+        for (Exercises e:allExercises
+             ) {System.out.println("e");
 
-        return "all-topics";
+        }
+
+
+
+        return "all-exercise-names";
 //         чтобы view мог отобразить значения полей "темы" нужно в методе контроллера создать model
 //          и добавить темы в качестве атрибутов этой модели
     }
+
     ///////////////////////////////////////////////////
 
-    @RequestMapping("/addNewTopic")
-    public String addNewTopic(Model model){
-        Topics topics = new Topics();
-        model.addAttribute("topic", topics);
-        System.out.println("done add");
+    @RequestMapping("/addNewExercise")
+    public String addNewExercise(Model model){
+        Exercises exercises = new Exercises();
+        model.addAttribute("exercise", exercises);
 
-        return "all-topics-info";
+        return "all-exercises-info";
 
     }
 
-    @RequestMapping("/saveTopic")
-    public String saveTopic(@ModelAttribute("topic") Topics topics){
 
-        topicsService.saveTopic(topics);
+    @RequestMapping("/saveExercise")
+    public String saveExercise(@ModelAttribute("exercise") Exercises exercises){
 
-        return "redirect:/";
+        exercisesService.saveExercise(exercises);
+
+        return "redirect:/showExercises";
     }
 
-    @RequestMapping("/updateInfoTopic")
-    public String updateTopic(@RequestParam("topId") int id, Model model){
+    @RequestMapping("/updateInfoExercise")
+    public String updateExercise(@RequestParam("exId") int id, Model model){
 
-        Topics topics = topicsService.getTopic(id);
-        model.addAttribute("topic", topics);
-        return "all-topics-info";
+        Exercises exercises = exercisesService.getExercise(id);
+        model.addAttribute("exercise", exercises);
+        return "all-exercises-info";
     }
 
     //////////////////////////////////////////
-    @RequestMapping("/deleteTopic")
-    public String deleteTopic(@RequestParam("topId") int id){
+    @RequestMapping("/deleteExercise")
+    public String deleteExercise(@RequestParam("exId") int id){
 
-        topicsService.deleteTopic(id);
-        return "redirect:/";
+        exercisesService.deleteExercise(id);
+        return "redirect:/showExercises";
     }
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    @RequestMapping("/ex")
-    public String showAllExercises(Model model) {
-
-        List<Exercises> allExercises = exercisesService.getAllExercises();
-        model.addAttribute("allEx", allExercises);
-        System.out.println("+");
-
-        return "all-exercise-names";
-    }
 
 
 //    @RequestMapping("/exercisesByTopic")

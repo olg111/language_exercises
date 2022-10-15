@@ -15,7 +15,6 @@
     <c:forEach var="topic" items="${allTop}">
 
 
-
       <c:url var="updateButton" value="/updateInfoTopic">
             <c:param name="topId" value="${topic.id}"/>
       </c:url>
@@ -27,7 +26,7 @@
 
 
       <tr>
-                <td> <a href="/ex">${topic.name}</a></td>
+                <td> <a href="/showExercises">${topic.name}</a></td>
 
                 <td>
                       <input type="button" value="Update"
@@ -38,10 +37,6 @@
                       <input type="button" value="Delete"
                       onclick="window.location.href = '${deleteButton}'"/>
                 </td>
-
-
-
-
 
 
       </tr>

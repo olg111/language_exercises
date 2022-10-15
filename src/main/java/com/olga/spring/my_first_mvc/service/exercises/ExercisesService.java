@@ -8,4 +8,10 @@ import java.util.List;
 public interface ExercisesService {
     public List<Exercises> getAllExercises();
 
+    public  void saveExercise(Exercises exercises);
+
+    public Exercises getExercise(int id);
+
+    public  void deleteExercise(int id);
+
 }

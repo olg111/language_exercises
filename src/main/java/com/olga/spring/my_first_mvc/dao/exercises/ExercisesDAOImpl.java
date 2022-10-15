@@ -29,4 +29,26 @@ public class ExercisesDAOImpl implements ExercisesDAO {
         List<Exercises> allExercises =  query.getResultList();
         return allExercises;
     }
+
+    @Override
+    public void saveExercise(Exercises exercises) {
+        Session session =sessionFactory.getCurrentSession();
+        session.saveOrUpdate(exercises);
+    }
+
+    @Override
+    public Exercises getExercise(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Exercises exercises= session.get(Exercises.class, id);
+        return exercises;
+    }
+
+    @Override
+    public void deleteExercise(int id) {
+        Session session= sessionFactory.getCurrentSession();
+        Query<Exercises> query = session.createQuery("delete from Exercises where id=:exerciseId");
+        query.setParameter("exerciseId", id);
+        query.executeUpdate();
+
+    }
 }

@@ -23,4 +23,25 @@ public class ExercisesServiceImpl implements ExercisesService {
     public List<Exercises> getAllExercises() {
         return exercisesDAO.getAllExercises();
     }
+
+    @Override
+    @Transactional
+    public void saveExercise(Exercises exercises) {
+        exercisesDAO.saveExercise(exercises);
+
+    }
+
+    @Override
+    @Transactional
+    public Exercises getExercise(int id) {
+
+        return exercisesDAO.getExercise(id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteExercise(int id) {
+        exercisesDAO.deleteExercise(id);
+
+    }
 }
