@@ -65,6 +65,7 @@ public class Topics {
 //        this.ex = ex;
 //    }
 
+
     @Override
     public String toString() {
         return "Topics{" +
@@ -72,6 +73,5 @@ public class Topics {
                 ", name='" + name + '\'' +
                 '}';
     }
-
 }
 

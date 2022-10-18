@@ -19,7 +19,7 @@ public class Exercises {
     private int topicId;
 
 
-//
+
 //    @ManyToOne(cascade = {CascadeType.ALL})
 //    @JoinColumn(name = "topics_id")
 //    private Topics topics;

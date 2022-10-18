@@ -12,7 +12,7 @@
         <th>Exercises</th>
     </tr>
 
-    <c:forEach var="ex" items="${allEx}">
+    <c:forEach var="ex" items="${exById}">
 
 
           <c:url var="updateButton" value="/updateInfoExercise">

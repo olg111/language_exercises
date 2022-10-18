@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -19,27 +20,34 @@ public class ExerciseController {
 
 
 
-      @Autowired
+    @Autowired
     private ExercisesService exercisesService;
 
-    @RequestMapping("/showExercises")
-    public String showAllExercises(Model model){
+//    @Autowired
+//    private Topics topics;
 
-        List<Exercises> allExercises =exercisesService.getAllExercises();
-        model.addAttribute("allEx", allExercises);
-        for (Exercises e:allExercises
-             ) {System.out.println("e");
+    List<Exercises> allExercises;
+    List<Exercises> exercisesById;
 
-        }
+//    @RequestMapping("/showExercises")
+//    public String showAllExercises(Model model){
+//
+//        allExercises =exercisesService.getAllExercises();
+//        model.addAttribute("allEx", allExercises);
+//
+//        return "all-exercise-names";
+////         чтобы view мог отобразить значения полей "темы" нужно в методе контроллера создать model
+////          и добавить темы в качестве атрибутов этой модели
+//    }
 
-
+        @RequestMapping("/showExercises/{topicId}")
+    public String showExercisesByTopic(@PathVariable int topicId, Model model) {
+            exercisesById = exercisesService.getExercisesById(topicId);
+            model.addAttribute("exById", exercisesById);
 
         return "all-exercise-names";
-//         чтобы view мог отобразить значения полей "темы" нужно в методе контроллера создать model
-//          и добавить темы в качестве атрибутов этой модели
     }
 
-    ///////////////////////////////////////////////////
 
     @RequestMapping("/addNewExercise")
     public String addNewExercise(Model model){
@@ -55,8 +63,9 @@ public class ExerciseController {
     public String saveExercise(@ModelAttribute("exercise") Exercises exercises){
 
         exercisesService.saveExercise(exercises);
+//        return "all-exercises-info";
 
-        return "redirect:/showExercises";
+        return "redirect:/showExercises/"+exercises.getTopicId() ;
     }
 
     @RequestMapping("/updateInfoExercise")
@@ -72,7 +81,7 @@ public class ExerciseController {
     public String deleteExercise(@RequestParam("exId") int id){
 
         exercisesService.deleteExercise(id);
-        return "redirect:/showExercises";
+        return "redirect:/showExercises/{topicId}";
     }
 
 
@@ -81,14 +90,6 @@ public class ExerciseController {
 
 
 
-//    @RequestMapping("/exercisesByTopic")
-//    public String showExercisesByTopic(@RequestParam("empId") int topicId, Model model) {
-//
-//        Exercises exercise = exercisesService.getAllExercises().get(topicId);
-//        model.addAttribute("exercise", exercise);
-//
-//        return "all-exercise-names";
-//    }
 
 
 
