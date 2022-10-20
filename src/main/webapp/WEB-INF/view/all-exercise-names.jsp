@@ -19,7 +19,7 @@
                 <c:param name="exId" value="${ex.id}"/>
           </c:url>
 
-          <c:url var="deleteButton" value="/deleteTopic">
+          <c:url var="deleteButton" value="/deleteExercise">
                 <c:param name="exId" value="${ex.id}"/>
           </c:url>
 

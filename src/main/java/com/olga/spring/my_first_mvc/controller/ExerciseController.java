@@ -48,29 +48,23 @@ public class ExerciseController {
         return "all-exercise-names";
     }
 
-
     @RequestMapping("/addNewExercise")
     public String addNewExercise(Model model){
         Exercises exercises = new Exercises();
         model.addAttribute("exercise", exercises);
-
         return "all-exercises-info";
-
     }
-
 
     @RequestMapping("/saveExercise")
     public String saveExercise(@ModelAttribute("exercise") Exercises exercises){
-
         exercisesService.saveExercise(exercises);
 //        return "all-exercises-info";
 
-        return "redirect:/showExercises/"+exercises.getTopicId() ;
+        return "redirect:/showExercises/"+ exercises.getTopicId() ;
     }
 
     @RequestMapping("/updateInfoExercise")
     public String updateExercise(@RequestParam("exId") int id, Model model){
-
         Exercises exercises = exercisesService.getExercise(id);
         model.addAttribute("exercise", exercises);
         return "all-exercises-info";
@@ -79,9 +73,9 @@ public class ExerciseController {
     //////////////////////////////////////////
     @RequestMapping("/deleteExercise")
     public String deleteExercise(@RequestParam("exId") int id){
-
+        int topicID =     exercisesService.getExercise(id).getTopicId();
         exercisesService.deleteExercise(id);
-        return "redirect:/showExercises/{topicId}";
+        return "redirect:/showExercises/"  + topicID;
     }
 
 
