@@ -4,6 +4,7 @@ import com.olga.spring.my_first_mvc.entity.Exercises;
 import com.olga.spring.my_first_mvc.entity.Topics;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TopicsDAO {
 
@@ -14,4 +15,6 @@ public interface TopicsDAO {
     public Topics getTopic(int id);
 
     public void deleteTopic(int id);
+
+
 }

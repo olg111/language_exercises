@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository  // спациализированный @Component
 public class TopicsDAOImpl implements TopicsDAO {
@@ -29,6 +30,9 @@ public class TopicsDAOImpl implements TopicsDAO {
         List<Topics> allTopics =  query.getResultList();
         return allTopics;
     }
+
+
+
 
     @Override
     public void saveTopic(Topics topics) {
@@ -54,4 +58,6 @@ public class TopicsDAOImpl implements TopicsDAO {
         query.executeUpdate();
 
     }
+
+
 }

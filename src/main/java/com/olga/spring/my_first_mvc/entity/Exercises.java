@@ -2,6 +2,8 @@ package com.olga.spring.my_first_mvc.entity;
 
 
 import javax.persistence.*;
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity
 @Table(name = "exercises")
@@ -26,11 +28,8 @@ public class Exercises {
 
 
     public Exercises() {
-    }
 
-    public Exercises(String name, int topicId) {
-        this.name = name;
-        this.topicId = topicId;
+
     }
 
     public int getId() {
@@ -57,13 +56,9 @@ public class Exercises {
         this.topicId = topicId;
     }
 
-//    public Topics getTopics() {
-//        return topics;
-//    }
-//
-//    public void setTopics(Topics topics) {
-//        this.topics = topics;
-//    }
+
+
+
 
 
     @Override

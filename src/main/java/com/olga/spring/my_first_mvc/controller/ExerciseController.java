@@ -7,13 +7,17 @@ import com.olga.spring.my_first_mvc.service.exercises.ExercisesService;
 import com.olga.spring.my_first_mvc.service.topics.TopicsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ExerciseController {
@@ -23,11 +27,25 @@ public class ExerciseController {
     @Autowired
     private ExercisesService exercisesService;
 
-//    @Autowired
-//    private Topics topics;
+
+    @Autowired
+    private TopicsService topicsService;
+
+
 
     List<Exercises> allExercises;
     List<Exercises> exercisesById;
+
+    Map<Integer, String> topicMap = new HashMap<>();
+
+
+    public Map <Integer, String> createMap(){
+        for (Topics top: topicsService.getAllTopics() ) {
+            topicMap.put(top.getId(), top.getName());
+        }
+        return topicMap;
+    }
+
 
 //    @RequestMapping("/showExercises")
 //    public String showAllExercises(Model model){
@@ -50,23 +68,31 @@ public class ExerciseController {
 
     @RequestMapping("/addNewExercise")
     public String addNewExercise(Model model){
-        Exercises exercises = new Exercises();
-        model.addAttribute("exercise", exercises);
+        Exercises exercise = new Exercises();
+
+        createMap();
+
+        model.addAttribute("exercise", exercise);
+        model.addAttribute("topics", topicMap);
+
+
+       //return "all-test";
         return "all-exercises-info";
     }
 
     @RequestMapping("/saveExercise")
     public String saveExercise(@ModelAttribute("exercise") Exercises exercises){
         exercisesService.saveExercise(exercises);
-//        return "all-exercises-info";
-
         return "redirect:/showExercises/"+ exercises.getTopicId() ;
     }
 
     @RequestMapping("/updateInfoExercise")
     public String updateExercise(@RequestParam("exId") int id, Model model){
         Exercises exercises = exercisesService.getExercise(id);
+       // model.addAttribute("exercise", exercises);
+        createMap();
         model.addAttribute("exercise", exercises);
+        model.addAttribute("topics", topicMap);
         return "all-exercises-info";
     }
 
@@ -74,14 +100,10 @@ public class ExerciseController {
     @RequestMapping("/deleteExercise")
     public String deleteExercise(@RequestParam("exId") int id){
         int topicID =     exercisesService.getExercise(id).getTopicId();
+        System.out.println(topicID);
         exercisesService.deleteExercise(id);
         return "redirect:/showExercises/"  + topicID;
     }
-
-
-
-
-
 
 
 
