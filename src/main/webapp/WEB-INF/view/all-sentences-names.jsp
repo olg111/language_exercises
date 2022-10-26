@@ -4,21 +4,21 @@
 <html>
 <body>
 
-<h2>Choose an exercise</h2>
+<h2>Choose a sentence</h2>
 <br>
 
 <table>
     <tr>
-        <th>Exercises</th>
+        <th>Sentence</th>
     </tr>
 
-    <c:forEach var="ex" items="${exById}">
+    <c:forEach var="sent" items="${sentById}">
 
-          <c:url var="updateButton" value="/updateInfoExercise">
-                <c:param name="exId" value="${ex.id}"/>
+          <c:url var="updateButton" value="/updateInfoSentences">
+                <c:param name="sentId" value="${sent.id}"/>
           </c:url>
 
-          <c:url var="deleteButton" value="/deleteExercise">
+          <c:url var="deleteButton" value="/deleteSentence">
                 <c:param name="exId" value="${ex.id}"/>
           </c:url>
 
@@ -26,7 +26,7 @@
 
 
             <tr>
-                <td> <a href="showExercises/${topId}/showSentences/${exById.id}">${ex.name}</a></td>
+                <td> <a href="">${ex.name}</a></td>
 
                 <td>
                       <input type="button" value="Update"

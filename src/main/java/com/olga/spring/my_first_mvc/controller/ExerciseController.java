@@ -63,6 +63,11 @@ public class ExerciseController {
             exercisesById = exercisesService.getExercisesById(topicId);
             model.addAttribute("exById", exercisesById);
 
+
+
+            model.addAttribute("topId", topicId);
+
+
         return "all-exercise-names";
     }
 
@@ -100,7 +105,7 @@ public class ExerciseController {
     @RequestMapping("/deleteExercise")
     public String deleteExercise(@RequestParam("exId") int id){
         int topicID =     exercisesService.getExercise(id).getTopicId();
-        System.out.println(topicID);
+
         exercisesService.deleteExercise(id);
         return "redirect:/showExercises/"  + topicID;
     }

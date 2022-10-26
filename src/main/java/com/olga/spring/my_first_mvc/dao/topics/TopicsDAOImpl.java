@@ -32,14 +32,10 @@ public class TopicsDAOImpl implements TopicsDAO {
     }
 
 
-
-
     @Override
     public void saveTopic(Topics topics) {
         Session session =sessionFactory.getCurrentSession();
         session.saveOrUpdate(topics);
-
-
     }
 
     @Override
@@ -47,7 +43,6 @@ public class TopicsDAOImpl implements TopicsDAO {
         Session session= sessionFactory.getCurrentSession();
         Topics topics = session.get(Topics.class, id);
         return topics;
-
     }
 
     @Override
@@ -56,7 +51,6 @@ public class TopicsDAOImpl implements TopicsDAO {
         Query<Topics> query = session.createQuery("delete from Topics where id=:topicId");
         query.setParameter("topicId", id);
         query.executeUpdate();
-
     }
 
 

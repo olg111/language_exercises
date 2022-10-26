@@ -28,8 +28,6 @@ public class Exercises {
 
 
     public Exercises() {
-
-
     }
 
     public int getId() {
