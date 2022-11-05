@@ -14,6 +14,8 @@ public class Sentences {
     @Column(name = "sentence")
     private String sentence;
 
+    @Column(name = "hint")
+    private String hint;
 
     @Column(name = "exercise_id")
     private int exerciseId;
@@ -45,11 +47,20 @@ public class Sentences {
         this.exerciseId = exerciseId;
     }
 
+    public String getHint() {
+        return hint;
+    }
+
+    public void setHint(String hint) {
+        this.hint = hint;
+    }
+
     @Override
     public String toString() {
         return "Sentences{" +
                 "id=" + id +
                 ", sentence='" + sentence + '\'' +
+                ", hint='" + hint + '\'' +
                 ", exerciseId=" + exerciseId +
                 '}';
     }

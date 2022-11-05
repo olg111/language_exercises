@@ -63,9 +63,7 @@ public class ExerciseController {
             exercisesById = exercisesService.getExercisesById(topicId);
             model.addAttribute("exById", exercisesById);
 
-
-
-            model.addAttribute("topId", topicId);
+            // model.addAttribute("topId", topicId);
 
 
         return "all-exercise-names";
@@ -82,11 +80,12 @@ public class ExerciseController {
 
 
        //return "all-test";
-        return "all-exercises-info";
+        return "exercises-info";
     }
 
     @RequestMapping("/saveExercise")
     public String saveExercise(@ModelAttribute("exercise") Exercises exercises){
+
         exercisesService.saveExercise(exercises);
         return "redirect:/showExercises/"+ exercises.getTopicId() ;
     }
@@ -98,7 +97,7 @@ public class ExerciseController {
         createMap();
         model.addAttribute("exercise", exercises);
         model.addAttribute("topics", topicMap);
-        return "all-exercises-info";
+        return "exercises-info";
     }
 
     //////////////////////////////////////////

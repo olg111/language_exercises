@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class SentenceController {
@@ -30,42 +32,72 @@ public class SentenceController {
     List<Sentences> allSentences;
     List<Sentences> sentencesById;
 
+    Map<Integer, String> sentenceMap = new HashMap<>();
+
+
+    public Map <Integer, String> createSentenceMap(){
+        for (Sentences sent: sentencesService.getAllSentences() ) {
+            sentenceMap.put(sent.getId(), sent.getSentence());
+        }
+        return sentenceMap;
+    }
+
+
+   @RequestMapping("/showExercises/{topicId}/showSentences")
+   //@RequestMapping("/showSentences")
+
+    public String showSentences(@PathVariable int topicId, Model model) {
+        allSentences = sentencesService.getAllSentences();
+        model.addAttribute("allSent", allSentences);
+        model.addAttribute("topicId", topicId);
+
+        return "all-sentences-names";
+
+    }
 
 
 
     @RequestMapping("/showExercises/{topicId}/showSentences/{exerciseId}")
 
-
-    public String showSentencesByExercise(@PathVariable int exerciseId, Model model) {
-           sentencesById = sentencesService.getSentenceById(exerciseId);
+    public String showSentencesByExercise(@PathVariable int topicId, @PathVariable int exerciseId, Model model) {
+           sentencesById = sentencesService.getSentenceByExId(exerciseId);
             model.addAttribute("sentById", sentencesById);
+            model.addAttribute("topicId", topicId);
+
 
             return "all-sentences-names";
-
 
     }
     ///////////////////////////////////////////////////
 
-//    @RequestMapping("/addNewTopic")
-//    public String addNewTopic(Model model){
-//        Topics topics = new Topics();
-//        model.addAttribute("topic", topics);
-//        System.out.println("done add");
-//
-//        return "all-topics-info";
-//
-//    }
+    @RequestMapping("/addNewSentence/{topicId}")
+    public String addNewSentence(@PathVariable int topicId, Model model){
+        Sentences sentence = new Sentences();
+        createSentenceMap();
+        System.out.println("topicId:" + topicId);
+        model.addAttribute("sentence", sentence);
+        model.addAttribute("sentenceMap", sentenceMap);
+        model.addAttribute("topicId", topicId);
 
-//    @RequestMapping("/saveTopic")
-//    public String saveTopic(@ModelAttribute("topic") Topics topics){
-//
-//        topicsService.saveTopic(topics);
-//
-//        return "redirect:/";
-//    }
+
+        return "sentences-info";
+    }
+
+    @RequestMapping("/addNewSentence/{topicId}/saveSentence")
+    public String saveSentence(@PathVariable int topicId, @ModelAttribute("sentence") Sentences sentences, Model model){
+
+      sentencesService.saveSentence(sentences);
+
+      model.addAttribute("topicId", topicId);
+
+
+       // return "redirect:/showExercises/{topicId}/showSentences"+ exercises.getTopicId() ;
+      //  return "redirect:/showExercises/{topicId}/showSentences" ;
+        return "redirect:/showExercises/"+ topicId + "/showSentences/" + sentences.getExerciseId();
+    }
 
     @RequestMapping("/updateInfoSentences")
-    public String updateTopic(@RequestParam("sentId") int id, Model model){
+    public String updateSentence(@RequestParam("sentId") int id, Model model){
 
         Sentences sentences = sentencesService.getSentence(id);
         model.addAttribute("sent", sentences);

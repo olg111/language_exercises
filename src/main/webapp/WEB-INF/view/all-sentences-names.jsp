@@ -12,21 +12,22 @@
         <th>Sentence</th>
     </tr>
 
-    <c:forEach var="sent" items="${sentById}">
+    <c:forEach var="allSent" items="${sentById}">
+
 
           <c:url var="updateButton" value="/updateInfoSentences">
-                <c:param name="sentId" value="${sent.id}"/>
+                <c:param name="sentId" value="${allSent.id}"/>
           </c:url>
 
           <c:url var="deleteButton" value="/deleteSentence">
-                <c:param name="exId" value="${ex.id}"/>
+                <c:param name="sentId" value="${allSent.id}"/>
           </c:url>
 
 
 
 
             <tr>
-                <td> <a href="">${ex.name}</a></td>
+                <td> <a href="">${allSent.sentence}</a></td>
 
                 <td>
                       <input type="button" value="Update"
@@ -46,19 +47,26 @@
 </table>
 
                 <br>
-                    <c:url var="addNewExercise" value="/addNewExercise">
+                    <c:url var="addNewSentence" value="/addNewSentence/${topicId}">
                     </c:url>
                     <input type="button" value="Add"
-                    onclick="window.location.href = '${addNewExercise}'"/>
+                    onclick="window.location.href = '${addNewSentence}'"/>
 
                 <br>
                 <br>
 
+                     <c:url var="chooseExercise" value="/showExercises/${topicId}">
+                     </c:url>
+                     <input type="button" value="Return to exercises"
+                     onclick="window.location.href = '${chooseExercise}'"/>
+
+                <br>
+                <br>
 
                      <c:url var="chooseTopic" value="/">
                      </c:url>
                      <input type="button" value="Return to topics"
-                      onclick="window.location.href = '${chooseTopic}'"/>
+                     onclick="window.location.href = '${chooseTopic}'"/>
 
 
 </body>

@@ -8,7 +8,7 @@ import java.util.List;
 public interface SentencesService {
     public List<Sentences> getAllSentences();
 
-    public List<Sentences> getSentenceById(int exerciseId); //
+    public List<Sentences> getSentenceByExId(int exerciseId); //
 
     public void saveSentence(Sentences sentences);
 

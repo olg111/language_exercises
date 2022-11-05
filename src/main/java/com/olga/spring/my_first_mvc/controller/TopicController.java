@@ -42,7 +42,7 @@ public class TopicController {
         model.addAttribute("topic", topics);
         System.out.println("done add");
 
-        return "all-topics-info";
+        return "topics-info";
 
     }
 
@@ -59,7 +59,7 @@ public class TopicController {
 
         Topics topics = topicsService.getTopic(id);
         model.addAttribute("topic", topics);
-        return "all-topics-info";
+        return "topics-info";
     }
 
     //////////////////////////////////////////

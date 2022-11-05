@@ -1,9 +1,7 @@
 package com.olga.spring.my_first_mvc.service.sentences;
 
 import com.olga.spring.my_first_mvc.dao.sentences.SentencesDAO;
-import com.olga.spring.my_first_mvc.dao.topics.TopicsDAO;
 import com.olga.spring.my_first_mvc.entity.Sentences;
-import com.olga.spring.my_first_mvc.entity.Topics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,8 +25,8 @@ public class SentencesServiceImpl implements SentencesService {
 
     @Override
     @Transactional
-    public List<Sentences> getSentenceById(int exerciseId) {
-        return sentencesDAO.getSentenceById(exerciseId);
+    public List<Sentences> getSentenceByExId(int exerciseId) {
+        return sentencesDAO.getSentenceByExId(exerciseId);
     }
 
     @Override
