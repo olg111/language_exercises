@@ -4,30 +4,42 @@
 <html>
 <body>
 
-<h2>Choose a sentence</h2>
+<h2>Fill in the sentences</h2>
 <br>
 
+
+
 <table>
+
+
     <tr>
-        <th>Sentence</th>
+        <th>${exName}</th>
+
     </tr>
 
-    <c:forEach var="allSent" items="${sentById}">
 
 
-          <c:url var="updateButton" value="/updateInfoSentences">
-                <c:param name="sentId" value="${allSent.id}"/>
+    <c:forEach var="sentById" items="${sentById}">
+
+
+          <c:url var="updateButton" value="/updateInfoSentences/${topicId}">
+                <c:param name="sentId" value="${sentById.id}"/>
           </c:url>
 
-          <c:url var="deleteButton" value="/deleteSentence">
-                <c:param name="sentId" value="${allSent.id}"/>
+          <c:url var="deleteButton" value="/deleteSentence/${topicId}">
+                <c:param name="sentId" value="${sentById.id}"/>
           </c:url>
 
 
 
 
             <tr>
-                <td> <a href="">${allSent.sentence}</a></td>
+                <td> <a href="">${sentById.sentence}</a></td>
+
+                <td>
+                      <input type="button" value="check">
+
+                </td>
 
                 <td>
                       <input type="button" value="Update"

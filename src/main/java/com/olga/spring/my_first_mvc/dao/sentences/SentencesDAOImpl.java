@@ -56,7 +56,7 @@ public class SentencesDAOImpl implements SentencesDAO {
     public void deleteSentence(int id) {
         Session session = sessionFactory.getCurrentSession();
         Query<Sentences> query = session.createQuery("delete from Sentences where id=:sentenceId");
-        query.setParameter(":sentenceId", id);
+        query.setParameter("sentenceId", id);
         query.executeUpdate();
 
     }

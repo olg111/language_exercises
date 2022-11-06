@@ -11,7 +11,7 @@
 
         <form:hidden path="id"/>
 
-        Use pattern "bla bla {answer = world}, bla {answer = world}"
+        Use pattern "bla bla {answer=world}, bla {answer=world}"
         <br><br>
         Write a new sentence <form:input path="sentence"/>
         Write a hint <form:input path="hint"/>
