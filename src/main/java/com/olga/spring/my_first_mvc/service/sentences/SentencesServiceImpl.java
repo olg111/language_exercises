@@ -1,5 +1,6 @@
 package com.olga.spring.my_first_mvc.service.sentences;
 
+import com.olga.spring.my_first_mvc.dao.answers.AnswersDAO;
 import com.olga.spring.my_first_mvc.dao.sentences.SentencesDAO;
 import com.olga.spring.my_first_mvc.entity.Sentences;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ public class SentencesServiceImpl implements SentencesService {
     //чтобы вызвать метод из DAO прописываем зависимость от него
     @Autowired
     private SentencesDAO sentencesDAO;
+    @Autowired
+    private AnswersDAO answersDAO;
 
 
     @Override
@@ -46,6 +49,8 @@ public class SentencesServiceImpl implements SentencesService {
     @Override
     @Transactional
     public void deleteSentence(int id) {
+        answersDAO.deleteAnswerBySentenceId(id);
+
         sentencesDAO.deleteSentence(id);
 
     }

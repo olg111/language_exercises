@@ -87,7 +87,7 @@ public class ExerciseController {
     public String saveExercise(@ModelAttribute("exercise") Exercises exercises){
 
         exercisesService.saveExercise(exercises);
-        return "redirect:/showExercises/"+ exercises.getTopicId() ;
+        return "redirect:/showExercises/"+ exercises.getTopics().getId() ;
     }
 
     @RequestMapping("/updateInfoExercise")
@@ -103,7 +103,7 @@ public class ExerciseController {
     //////////////////////////////////////////
     @RequestMapping("/deleteExercise")
     public String deleteExercise(@RequestParam("exId") int id){
-        int topicID =     exercisesService.getExercise(id).getTopicId();
+        int topicID =     exercisesService.getExercise(id).getTopics().getId();
 
         exercisesService.deleteExercise(id);
         return "redirect:/showExercises/"  + topicID;

@@ -103,7 +103,7 @@ public class SentenceController {
 
     //////////////////////////////////////////
     @RequestMapping("/deleteSentence/{topicId}")
-    public String deleteSentence(@PathVariable int topicId, @RequestParam("sentId") int id, Model model){
+    public String deleteSentence(@PathVariable int topicId, @RequestParam("sentId") int id,  Model model){
 
         int exerciseId = sentencesService.getSentence(id).getExerciseId();
         model.addAttribute("topicId", topicId);

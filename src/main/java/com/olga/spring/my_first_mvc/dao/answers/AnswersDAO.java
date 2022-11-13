@@ -12,5 +12,8 @@ public interface AnswersDAO {
 
     public Answers getAnswer(int id);
 
+    public  void deleteAnswerBySentenceId(int sentenceId);
+
+
 
 }

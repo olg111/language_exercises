@@ -41,4 +41,19 @@ public class AnswersDAOImpl implements AnswersDAO{
         Answers answers = session.get(Answers.class, id);
         return answers;
     }
+
+    @Override
+    public void deleteAnswerBySentenceId (int sentenceId) {
+        Session session= sessionFactory.getCurrentSession();
+        Query<Answers> query = session.createQuery("delete from Answers where sentence.id=:sentenceId");
+        query.setParameter("sentenceId", sentenceId);
+        query.executeUpdate();
+
+    }
+
+
+
+
+
+
 }

@@ -17,17 +17,20 @@ public class Exercises {
     @Column(name = "exercise_name")
     private String name;
 
-    @Column(name = "topic_id")
-    private int topicId;
+//    @Column(name = "topic_id")
+//    private int topicId   ;
 
 
-
-//    @ManyToOne(cascade = {CascadeType.ALL})
-//    @JoinColumn(name = "topics_id")
-//    private Topics topics;
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
+    @JoinColumn(name = "topic_id")
+    private Topics topics;
 
 
     public Exercises() {
+    }
+
+    public Exercises(String name) {
+        this.name = name;
     }
 
     public int getId() {
@@ -46,25 +49,21 @@ public class Exercises {
         this.name = name;
     }
 
-    public int getTopicId() {
-        return topicId;
+
+
+    public Topics getTopics() {
+        return topics;
     }
 
-    public void setTopicId(int topicId) {
-        this.topicId = topicId;
+    public void setTopics(Topics topics) {
+        this.topics = topics;
     }
-
-
-
-
-
 
     @Override
     public String toString() {
         return "Exercises{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", topicId=" + topicId +
+                "name='" + name + '\'' +
                 '}';
     }
+
 }

@@ -17,10 +17,21 @@ public class Answers {
     @Column(name = "placeholder")
     private String placeholder;
 
-    @Column(name = "sentence_id")
-    private int sentenceId;
+//    @Column(name = "sentence_id")
+//    private int sentenceId;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
+    @JoinColumn(name = "sentence_id")
+    private Sentences sentence;
+
+
 
     public Answers() {
+    }
+
+    public Answers(String answer, String placeholder) {
+        this.answer = answer;
+        this.placeholder = placeholder;
     }
 
     public int getId() {
@@ -47,21 +58,28 @@ public class Answers {
         this.placeholder = placeholder;
     }
 
-    public int getSentenceId() {
-        return sentenceId;
+//    public int getSentenceId() {
+//        return sentenceId;
+//    }
+//
+//    public void setSentenceId(int sentenceId) {
+//        this.sentenceId = sentenceId;
+//    }
+
+
+    public Sentences getSentence() {
+        return sentence;
     }
 
-    public void setSentenceId(int sentenceId) {
-        this.sentenceId = sentenceId;
+    public void setSentence(Sentences sentence) {
+        this.sentence = sentence;
     }
 
     @Override
     public String toString() {
         return "Answers{" +
-                "id=" + id +
-                ", answer='" + answer + '\'' +
+                "answer='" + answer + '\'' +
                 ", placeholder='" + placeholder + '\'' +
-                ", sentenceId=" + sentenceId +
                 '}';
     }
 }

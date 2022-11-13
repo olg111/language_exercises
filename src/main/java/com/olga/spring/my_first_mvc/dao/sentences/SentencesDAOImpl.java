@@ -30,6 +30,7 @@ public class SentencesDAOImpl implements SentencesDAO {
     @Override
     public List<Sentences> getSentenceByExId(int exerciseId) {
         Session session = sessionFactory.getCurrentSession();
+
         Query<Sentences> query = session.createQuery("from Sentences " +
                 "where exerciseId = '"+exerciseId+"'", Sentences.class);
         List<Sentences> allSentencesById = query.getResultList();

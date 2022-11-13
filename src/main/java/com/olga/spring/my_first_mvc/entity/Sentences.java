@@ -1,6 +1,8 @@
 package com.olga.spring.my_first_mvc.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table (name = "sentences")
@@ -20,8 +22,36 @@ public class Sentences {
     @Column(name = "exercise_id")
     private int exerciseId;
 
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.REMOVE }
+            , mappedBy = "sentence"
+            , orphanRemoval = true
+            , fetch = FetchType.LAZY)
+    private List<Answers> answer ;
+
     public Sentences() {
     }
+
+    public Sentences(String sentence, String hint) {
+        this.sentence = sentence;
+        this.hint = hint;
+    }
+
+    public  void AddAnswersToSentences(Answers answers){
+        if (answer == null){
+            answer = new ArrayList<>();
+        }
+        answer.add(answers);
+        answers.setSentence(this);
+
+    }
+
+
+
+
+
+
+
+
 
     public int getId() {
         return id;

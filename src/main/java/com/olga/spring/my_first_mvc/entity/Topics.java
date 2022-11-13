@@ -17,11 +17,10 @@ public class Topics {
     @Column(name = "name")
     private String name;
 
-//    @OneToMany(cascade = {CascadeType.ALL}
-//            , mappedBy = "topics"
-//            , fetch = FetchType.LAZY)
-//    private List<Exercises> ex ;
-
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE}
+            , mappedBy = "topics"
+            , fetch = FetchType.LAZY)
+    private List<Exercises> ex ;
 
     public Topics() {
     }
@@ -30,15 +29,17 @@ public class Topics {
         this.name = name;
     }
 
-//    public  void AddExercisesToTopics(Exercises exercises){
-//        if (ex == null){
-//            ex = new ArrayList<>();
-//        }
-//        ex.add(exercises);
-//        exercises.setTopics(this);
-//
-//    }
 
+
+
+    public  void AddExercisesToTopics(Exercises exercises){
+        if (ex == null){
+            ex = new ArrayList<>();
+        }
+        ex.add(exercises);
+        exercises.setTopics(this);
+
+    }
 
 
     public int getId() {
@@ -57,20 +58,11 @@ public class Topics {
         this.name = name;
     }
 
-//    public List<Exercises> getEx() {
-//        return ex;
-//    }
-//
-//    public void setEx(List<Exercises> ex) {
-//        this.ex = ex;
-//    }
-
 
     @Override
     public String toString() {
         return "Topics{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 '}';
     }
 }

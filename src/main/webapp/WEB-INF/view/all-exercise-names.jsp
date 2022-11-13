@@ -26,7 +26,7 @@
 
 
             <tr>
-                <td> <a href="/showExercises/${ex.topicId}/showSentences/${ex.id}">${ex.name}</a></td>
+                <td> <a href="/showExercises/${ex.topics.id}/showSentences/${ex.id}">${ex.name}</a></td>
 
                 <td>
                       <input type="button" value="Update"

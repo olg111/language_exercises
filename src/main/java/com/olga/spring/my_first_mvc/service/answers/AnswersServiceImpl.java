@@ -40,7 +40,8 @@ public class AnswersServiceImpl implements AnswersService{
             String [] placeholderAndAnswer = matcher.group(1).split("=");
             answers.setPlaceholder(placeholderAndAnswer[0]);
             answers.setAnswer(placeholderAndAnswer[1]);
-            answers.setSentenceId(sentences.getId());
+            //answers.setSentenceId(sentences.getId());
+            answers.setSentence(sentences);
             answersDAO.saveAnswers(answers);
         }
 
