@@ -32,6 +32,7 @@ public class SentencesServiceImpl implements SentencesService {
     @Override
     @Transactional
     public void saveSentence(Sentences sentences) {
+
         sentencesDAO.saveSentence(sentences);
 
     }

@@ -1,9 +1,8 @@
 package com.olga.spring.my_first_mvc.controller;
 
 
-import com.olga.spring.my_first_mvc.entity.Exercises;
 import com.olga.spring.my_first_mvc.entity.Sentences;
-import com.olga.spring.my_first_mvc.entity.Topics;
+import com.olga.spring.my_first_mvc.service.answers.AnswersService;
 import com.olga.spring.my_first_mvc.service.exercises.ExercisesService;
 import com.olga.spring.my_first_mvc.service.sentences.SentencesService;
 import com.olga.spring.my_first_mvc.service.topics.TopicsService;
@@ -28,6 +27,8 @@ public class SentenceController {
     private ExercisesService exercisesService;
     @Autowired
     private SentencesService sentencesService;
+    @Autowired
+    private AnswersService answersService;
 
     List<Sentences> allSentences;
     List<Sentences> sentencesById;
@@ -84,6 +85,10 @@ public class SentenceController {
     public String saveSentence(@PathVariable int topicId, @ModelAttribute("sentence") Sentences sentences, Model model){
 
       sentencesService.saveSentence(sentences);
+      answersService.saveAnswers(sentences);
+
+
+
       model.addAttribute("topicId", topicId);
         return "redirect:/showExercises/"+ topicId + "/showSentences/" + sentences.getExerciseId();
     }
