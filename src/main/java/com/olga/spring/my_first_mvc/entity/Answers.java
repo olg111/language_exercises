@@ -29,7 +29,7 @@ public class Answers {
     public Answers() {
     }
 
-    public Answers(String answer, String placeholder) {
+    public Answers (String answer, String placeholder) {
         this.answer = answer;
         this.placeholder = placeholder;
     }

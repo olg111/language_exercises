@@ -15,6 +15,8 @@ public interface SentencesDAO {
 
     public Sentences getSentence(int id);
 
+
+
     public void deleteSentence(int id);
 
 

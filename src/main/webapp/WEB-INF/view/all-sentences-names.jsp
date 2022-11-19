@@ -59,7 +59,7 @@
 </table>
 
                 <br>
-                    <c:url var="addNewSentence" value="/addNewSentence/${topicId}">
+                    <c:url var="addNewSentence" value="/addNewSentence/${topicId}/${exerciseId}">
                     </c:url>
                     <input type="button" value="Add"
                     onclick="window.location.href = '${addNewSentence}'"/>

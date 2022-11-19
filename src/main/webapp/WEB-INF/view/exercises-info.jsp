@@ -15,7 +15,7 @@
 
 
 
-        Topic name (id) <form:select path ="topicId">
+        Topic name (id) <form:select path ="topic.id">
 
 
                        <form:options items="${topics}"/>

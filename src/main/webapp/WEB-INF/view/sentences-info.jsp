@@ -17,7 +17,10 @@
         Write a hint <form:input path="hint"/>
         <br><br>
 
-        Exercise name (id) <form:input path="exerciseId"/>
+
+        <form:hidden path="exercise.id" value="${exerciseId}"/>
+
+
 
 
         <br><br>

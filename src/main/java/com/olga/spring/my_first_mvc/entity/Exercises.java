@@ -2,8 +2,7 @@ package com.olga.spring.my_first_mvc.entity;
 
 
 import javax.persistence.*;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 @Entity
 @Table(name = "exercises")
@@ -23,8 +22,14 @@ public class Exercises {
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
     @JoinColumn(name = "topic_id")
-    private Topics topics;
+    private Topics topic;
 
+
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.REMOVE }
+            , mappedBy = "exercise"
+            , orphanRemoval = true
+            , fetch = FetchType.LAZY)
+    private List<Sentences> sentencesList ;
 
     public Exercises() {
     }
@@ -51,12 +56,20 @@ public class Exercises {
 
 
 
-    public Topics getTopics() {
-        return topics;
+    public Topics getTopic() {
+        return topic;
     }
 
-    public void setTopics(Topics topics) {
-        this.topics = topics;
+    public void setTopic(Topics topic) {
+        this.topic = topic;
+    }
+
+    public List<Sentences> getSentencesList() {
+        return sentencesList;
+    }
+
+    public void setSentencesList(List<Sentences> sentencesList) {
+        this.sentencesList = sentencesList;
     }
 
     @Override

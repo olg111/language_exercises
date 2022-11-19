@@ -50,7 +50,6 @@ public class SentencesServiceImpl implements SentencesService {
     @Transactional
     public void deleteSentence(int id) {
         answersDAO.deleteAnswerBySentenceId(id);
-
         sentencesDAO.deleteSentence(id);
 
     }

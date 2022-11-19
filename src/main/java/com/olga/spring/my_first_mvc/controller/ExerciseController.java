@@ -7,14 +7,12 @@ import com.olga.spring.my_first_mvc.service.exercises.ExercisesService;
 import com.olga.spring.my_first_mvc.service.topics.TopicsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -87,7 +85,7 @@ public class ExerciseController {
     public String saveExercise(@ModelAttribute("exercise") Exercises exercises){
 
         exercisesService.saveExercise(exercises);
-        return "redirect:/showExercises/"+ exercises.getTopics().getId() ;
+        return "redirect:/showExercises/"+ exercises.getTopic().getId() ;
     }
 
     @RequestMapping("/updateInfoExercise")
@@ -103,7 +101,7 @@ public class ExerciseController {
     //////////////////////////////////////////
     @RequestMapping("/deleteExercise")
     public String deleteExercise(@RequestParam("exId") int id){
-        int topicID =     exercisesService.getExercise(id).getTopics().getId();
+        int topicID =     exercisesService.getExercise(id).getTopic().getId();
 
         exercisesService.deleteExercise(id);
         return "redirect:/showExercises/"  + topicID;

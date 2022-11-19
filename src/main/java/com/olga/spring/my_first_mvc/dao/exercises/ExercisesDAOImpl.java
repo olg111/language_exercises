@@ -34,7 +34,7 @@ public class ExercisesDAOImpl implements ExercisesDAO {
     public List<Exercises> getExercisesById(int topicId) {
         Session session = sessionFactory.getCurrentSession();
         Query<Exercises> query = session.createQuery("from Exercises " +
-                "where topics.id = '"+topicId+"'", Exercises.class);
+                "where topic.id = '"+topicId+"'", Exercises.class);
 
         List<Exercises> allExercisesById =  query.getResultList();
         return allExercisesById;

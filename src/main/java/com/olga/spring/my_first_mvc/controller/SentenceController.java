@@ -30,6 +30,7 @@ public class SentenceController {
     @Autowired
     private AnswersService answersService;
 
+
     List<Sentences> allSentences;
     List<Sentences> sentencesById;
 
@@ -68,16 +69,14 @@ public class SentenceController {
     }
     ///////////////////////////////////////////////////
 
-    @RequestMapping("/addNewSentence/{topicId}")
-    public String addNewSentence(@PathVariable int topicId, Model model){
+    @RequestMapping("/addNewSentence/{topicId}/{exerciseId}")
+    public String addNewSentence(@PathVariable int topicId, @PathVariable int exerciseId,  Model model){
         Sentences sentence = new Sentences();
         createSentenceMap();
-
         model.addAttribute("sentence", sentence);
         model.addAttribute("sentenceMap", sentenceMap);
         model.addAttribute("topicId", topicId);
-
-
+        model.addAttribute("exerciseId", exerciseId);
         return "sentences-info";
     }
 
@@ -90,7 +89,8 @@ public class SentenceController {
 
 
       model.addAttribute("topicId", topicId);
-        return "redirect:/showExercises/"+ topicId + "/showSentences/" + sentences.getExerciseId();
+       // return "redirect:/showExercises/"+ topicId + "/showSentences/" + sentences.getExerciseId();
+        return "redirect:/showExercises/"+ topicId + "/showSentences/" + sentences.getExercise().getId();
     }
 
     @RequestMapping("/updateInfoSentences/{topicId}")
@@ -105,7 +105,7 @@ public class SentenceController {
     @RequestMapping("/deleteSentence/{topicId}")
     public String deleteSentence(@PathVariable int topicId, @RequestParam("sentId") int id,  Model model){
 
-        int exerciseId = sentencesService.getSentence(id).getExerciseId();
+        int exerciseId = sentencesService.getSentence(id).getExercise().getId(); ///
         model.addAttribute("topicId", topicId);
 
 

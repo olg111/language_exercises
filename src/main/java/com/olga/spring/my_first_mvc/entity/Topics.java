@@ -18,7 +18,7 @@ public class Topics {
     private String name;
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE}
-            , mappedBy = "topics"
+            , mappedBy = "topic"
             , fetch = FetchType.LAZY)
     private List<Exercises> ex ;
 
@@ -28,19 +28,6 @@ public class Topics {
     public Topics(String name) {
         this.name = name;
     }
-
-
-
-
-    public  void AddExercisesToTopics(Exercises exercises){
-        if (ex == null){
-            ex = new ArrayList<>();
-        }
-        ex.add(exercises);
-        exercises.setTopics(this);
-
-    }
-
 
     public int getId() {
         return id;

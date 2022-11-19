@@ -32,7 +32,7 @@ public class SentencesDAOImpl implements SentencesDAO {
         Session session = sessionFactory.getCurrentSession();
 
         Query<Sentences> query = session.createQuery("from Sentences " +
-                "where exerciseId = '"+exerciseId+"'", Sentences.class);
+                "where exercise.id = '"+exerciseId+"'", Sentences.class);
         List<Sentences> allSentencesById = query.getResultList();
         return allSentencesById;
 
