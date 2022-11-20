@@ -2,7 +2,7 @@ package com.olga.spring.my_first_mvc.entity;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
+
 
 @Entity
 @Table(name = "users")
@@ -22,7 +22,7 @@ public class Users {
     @Column(name = "login")
     private String login;
 
-    @Size(min = 8, message = "password must be min 8 symbols")
+
     @Column(name = "password")
     private String password;
 

@@ -81,21 +81,19 @@
       <version>5.4.1</version>
     </dependency>
 
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-taglibs</artifactId>
-      <version>5.4.1</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-validator</artifactId>
-      <version>6.1.0.Final</version>
-    </dependency>
-
-
-
   </dependencies>
+
+  <repositories>
+    <!-- ... possibly other repository elements ... -->
+    <repository>
+      <id>spring-milestone</id>
+      <name>Spring Milestone Repository</name>
+      <url>https://repo.spring.io/milestone</url>
+    </repository>
+  </repositories>
+
+
+
 
   <build>
     <finalName>spring_my_first_language_exercises</finalName>
