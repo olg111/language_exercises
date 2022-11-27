@@ -1,4 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+
 <!DOCTYPE html>
 
 <html>
@@ -54,13 +57,15 @@
 
 
 <br>
- <c:url var="addNewTopic" value="/addNewTopic">
+ <c:url var="addNewTopic" value="/addNewTopic"></c:url>
 
- </c:url>
+ <c:url var="logout" value="/logout"></c:url>
+
 <input type="button" value="Add"
     onclick="window.location.href = '${addNewTopic}'"/>
 
-
+<input type="button" value="Logout"
+     onclick="window.location.href = '${logout}'"/>
 
 
 

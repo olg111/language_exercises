@@ -23,11 +23,19 @@
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 
+
+
+  <!--
+      https://docs.spring.io/spring-security/site/docs/5.4.11/guides/helloworld-xml.html
+      -->
+
     <!--
       - Location of the XML file that defines the root application context
       - Applied by ContextLoaderListener.
       https://docs.spring.io/spring-security/site/docs/5.4.11/guides/helloworld-xml.html
       -->
+
+
     <context-param>
       <param-name>contextConfigLocation</param-name>
       <param-value>
@@ -53,24 +61,6 @@
     <listener>
       <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </web-app>
 

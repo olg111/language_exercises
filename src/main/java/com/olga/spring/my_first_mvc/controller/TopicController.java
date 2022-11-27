@@ -62,12 +62,21 @@ public class TopicController {
         return "topics-info";
     }
 
-    //////////////////////////////////////////
+
     @RequestMapping("/deleteTopic")
     public String deleteTopic(@RequestParam("topId") int id){
 
         topicsService.deleteTopic(id);
         return "redirect:/";
+    }
+
+    //////////////////////////////////////////
+
+    @RequestMapping("/logout")
+    public String logout(){
+
+
+        return "index";
     }
 
 
