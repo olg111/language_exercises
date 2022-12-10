@@ -33,6 +33,7 @@
       <version>5.2.9.RELEASE</version>
     </dependency>
 
+
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
@@ -40,10 +41,41 @@
     </dependency>
 
     <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/taglibs/standard -->
+    <dependency>
+      <groupId>taglibs</groupId>
+      <artifactId>standard</artifactId>
+      <version>1.1.2</version>
+    </dependency>
+
+
+
+
+
+    <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
       <version>5.4.22.Final</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>5.4.2.Final</version>
+    </dependency>
+
+
+
+
+
+
 
     <dependency>
       <groupId>mysql</groupId>
@@ -57,11 +89,22 @@
       <version>0.9.5.2</version>
     </dependency>
 
+
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-orm</artifactId>
-      <version>5.2.9.RELEASE</version>
+      <version>4.2.4.RELEASE</version>
     </dependency>
+
+
+
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.11.3</version>
+    </dependency>
+
 
     <dependency>
       <groupId>org.aspectj</groupId>
@@ -81,6 +124,12 @@
       <version>5.4.1</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-taglibs</artifactId>
+      <version>5.4.1</version>
+    </dependency>
+
   </dependencies>
 
   <repositories>
@@ -91,9 +140,6 @@
       <url>https://repo.spring.io/milestone</url>
     </repository>
   </repositories>
-
-
-
 
   <build>
     <finalName>spring_my_first_language_exercises</finalName>

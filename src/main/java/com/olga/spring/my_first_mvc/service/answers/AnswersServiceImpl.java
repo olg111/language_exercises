@@ -45,11 +45,6 @@ public class AnswersServiceImpl implements AnswersService{
             answersDAO.saveAnswers(answers);
         }
 
-
-
-
-
-
     }
 
     @Transactional

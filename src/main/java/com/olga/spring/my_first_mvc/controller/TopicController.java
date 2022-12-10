@@ -22,13 +22,12 @@ public class TopicController {
     private TopicsService topicsService;
 
 
-
-
     @RequestMapping("/")
     public String showAllTopics(Model model){
 
         List<Topics> allTopics =topicsService.getAllTopics();
         model.addAttribute("allTop", allTopics);
+        System.out.println(allTopics.get(0).getId());
 
         return "all-topics";
 //         чтобы view мог отобразить значения полей "темы" нужно в методе контроллера создать model
@@ -40,7 +39,7 @@ public class TopicController {
     public String addNewTopic(Model model){
         Topics topics = new Topics();
         model.addAttribute("topic", topics);
-        System.out.println("done add");
+
 
         return "topics-info";
 
@@ -70,15 +69,11 @@ public class TopicController {
         return "redirect:/";
     }
 
-    //////////////////////////////////////////
-
-    @RequestMapping("/logout")
-    public String logout(){
-
-
-        return "index";
-    }
-
+//    @RequestMapping("/logout")
+//    public String logout(){
+//
+//        return "logout";
+//    }
 
 
 
