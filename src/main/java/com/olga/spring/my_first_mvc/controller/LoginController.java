@@ -1,28 +1,63 @@
 package com.olga.spring.my_first_mvc.controller;
 
 import com.olga.spring.my_first_mvc.entity.Topics;
+import com.olga.spring.my_first_mvc.service.topics.TopicsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
-// Annotation
+import java.util.List;
+
 @Controller
-// Class
 public class LoginController {
 
-//    @RequestMapping("/logout")
-//    public String logout{
+
+
+
+
+
+    @RequestMapping(value = { "/"}, method = RequestMethod.GET)
+    public ModelAndView welcomePage() {
+
+        ModelAndView model = new ModelAndView();
+        model.setViewName("welcomePage");
+        return model;
+    }
+
+//    @RequestMapping(value = { "/guest"}, method = RequestMethod.GET)
+//    public ModelAndView guestTopics() {
 //
-//        return "logout";
+//        ModelAndView model = new ModelAndView();
+//        model.setViewName("guest-topics");
+//        return model;
 //    }
 
-//
-//    // Method 2
-//    @RequestMapping(value = "/admin/*", method = RequestMethod.GET )
-//    public String admin()
-//    {
-//        return "topics-info";
+
+//    @RequestMapping(value = { "/admin"}, method = RequestMethod.GET)
+//    public ModelAndView homePage() {
+//        ModelAndView model = new ModelAndView();
+//        model.setViewName("all-topics");
+//        return model;
 //    }
+
+    @RequestMapping(value = "/loginPage", method = RequestMethod.GET)
+    public ModelAndView loginPage(@RequestParam(value = "error",required = false) String error,
+                                  @RequestParam(value = "logout",	required = false) String logout) {
+
+        ModelAndView model = new ModelAndView();
+        if (error != null) {
+            model.addObject("error", "Invalid Credentials provided.");
+        }
+
+        if (logout != null) {
+            model.addObject("message", "Logged out from JournalDEV successfully.");
+        }
+
+        model.setViewName("loginPage");
+        return model;
+    }
+
 }

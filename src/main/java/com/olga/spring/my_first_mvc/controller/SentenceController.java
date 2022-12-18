@@ -45,31 +45,49 @@ public class SentenceController {
     }
 
 
-   @RequestMapping("/showExercises/{topicId}/showSentences")
-   //@RequestMapping("/showSentences")
+//   @RequestMapping("/guest/showExercises/{topicId}/guest/showSentences")
+//   //@RequestMapping("/showSentences")
+//    public String showSentencesToGuest(@PathVariable int topicId, Model model) {
+//        allSentences = sentencesService.getAllSentences();
+//        model.addAttribute("allSent", allSentences);
+//        model.addAttribute("topicId", topicId);
+//        return "guest-sentences-names";
+//    }
+//
+//    @RequestMapping("/admin/showExercises/{topicId}/admin/showSentences")
+//    //@RequestMapping("/showSentences")
+//    public String showSentencesToAdmin(@PathVariable int topicId, Model model) {
+//        allSentences = sentencesService.getAllSentences();
+//        model.addAttribute("allSent", allSentences);
+//        model.addAttribute("topicId", topicId);
+//        return "admin-sentences-names";
+//    }
 
-    public String showSentences(@PathVariable int topicId, Model model) {
-        allSentences = sentencesService.getAllSentences();
-        model.addAttribute("allSent", allSentences);
-        model.addAttribute("topicId", topicId);
-        return "all-sentences-names";
-    }
 
-
-    @RequestMapping("/showExercises/{topicId}/showSentences/{exerciseId}")
-    public String showSentencesByExercise(@PathVariable int topicId, @PathVariable int exerciseId, Model model) {
+    @RequestMapping("/guest/showExercises/{topicId}/guest/showSentences/{exerciseId}")
+    public String showSentencesByExerciseToGuest(@PathVariable int topicId, @PathVariable int exerciseId, Model model) {
            sentencesById = sentencesService.getSentenceByExId(exerciseId);
         String exName = exercisesService.getExercise(exerciseId).getName();
             model.addAttribute("sentById", sentencesById);
             model.addAttribute("exerciseId", exerciseId);
             model.addAttribute("topicId", topicId);
             model.addAttribute("exName", exName);
-
-            return "all-sentences-names";
+            return "guest-sentences-names";
     }
-    ///////////////////////////////////////////////////
 
-    @RequestMapping("/addNewSentence/{topicId}/{exerciseId}")
+    @RequestMapping("/admin/showExercises/{topicId}/admin/showSentences/{exerciseId}")
+    public String showSentencesByExerciseToAdmin(@PathVariable int topicId, @PathVariable int exerciseId, Model model) {
+        sentencesById = sentencesService.getSentenceByExId(exerciseId);
+        String exName = exercisesService.getExercise(exerciseId).getName();
+        model.addAttribute("sentById", sentencesById);
+        model.addAttribute("exerciseId", exerciseId);
+        model.addAttribute("topicId", topicId);
+        model.addAttribute("exName", exName);
+        return "admin-sentences-names";
+    }
+
+
+    @RequestMapping("/admin/addNewSentence/{topicId}/{exerciseId}")
     public String addNewSentence(@PathVariable int topicId, @PathVariable int exerciseId,  Model model){
         Sentences sentence = new Sentences();
         createSentenceMap();
@@ -77,32 +95,28 @@ public class SentenceController {
         model.addAttribute("sentenceMap", sentenceMap);
         model.addAttribute("topicId", topicId);
         model.addAttribute("exerciseId", exerciseId);
-        return "sentences-info";
+        return "admin-sentences-info";
     }
 
-    @RequestMapping("/addNewSentence/{topicId}/saveSentence")
+    @RequestMapping("/admin/addNewSentence/{topicId}/admin/saveSentence")
     public String saveSentence(@PathVariable int topicId, @ModelAttribute("sentence") Sentences sentences, Model model){
-
       sentencesService.saveSentence(sentences);
       answersService.saveAnswers(sentences);
-
-
-
       model.addAttribute("topicId", topicId);
        // return "redirect:/showExercises/"+ topicId + "/showSentences/" + sentences.getExerciseId();
-        return "redirect:/showExercises/"+ topicId + "/showSentences/" + sentences.getExercise().getId();
+        return "redirect:/admin/showExercises/"+ topicId + "/admin/showSentences/" + sentences.getExercise().getId();
     }
 
-    @RequestMapping("/updateInfoSentences/{topicId}")
+    @RequestMapping("/admin/updateInfoSentences/{topicId}")
     public String updateSentence(@PathVariable int topicId, @RequestParam("sentId") int id, Model model){
         Sentences sentences = sentencesService.getSentence(id);
         model.addAttribute("sentence", sentences);
         model.addAttribute("topicId", topicId);
-        return "sentences-info";
+        return "admin-sentences-info";
     }
 
     //////////////////////////////////////////
-    @RequestMapping("/deleteSentence/{topicId}")
+    @RequestMapping("/admin/deleteSentence/{topicId}")
     public String deleteSentence(@PathVariable int topicId, @RequestParam("sentId") int id,  Model model){
 
         int exerciseId = sentencesService.getSentence(id).getExercise().getId(); ///
@@ -110,7 +124,7 @@ public class SentenceController {
 
 
         sentencesService.deleteSentence(id);
-        return "redirect:/showExercises/" + topicId +"/showSentences/" + exerciseId;
+        return "redirect:/admin/showExercises/" + topicId +"/admin/showSentences/" + exerciseId;
     }
 
 

@@ -16,17 +16,17 @@
     <c:forEach var="topic" items="${allTop}">
 
 
-      <c:url var="updateButton" value="/updateInfoTopic">
+      <c:url var="updateButton" value="/admin/updateInfoTopic">
             <c:param name="topId" value="${topic.id}"/>
       </c:url>
 
-      <c:url var="deleteButton" value="/deleteTopic">
+      <c:url var="deleteButton" value="/admin/deleteTopic">
             <c:param name="topId" value="${topic.id}"/>
       </c:url>
 
 
       <tr>
-                <td> <a href="/showExercises/${topic.id}">${topic.name}</a></td>
+                <td> <a href="/admin/showExercises/${topic.id}">${topic.name}</a></td>
 
                 <td>
                       <input type="button" value="Update"
@@ -45,11 +45,9 @@
 </table>
 
 <br>
- <c:url var="addNewTopic" value="/addNewTopic"></c:url>
+ <c:url var="addNewTopic" value="/admin/addNewTopic"></c:url>
 
- <c:url var="logout" value="/logout"></c:url>
 
- <c:url var="login" value="/login"></c:url>
 
 
 
@@ -63,13 +61,17 @@
 
 <br><br>
 
-    <input type="button" value="Login"
-         onclick="window.location.href = '${login}'"/>
 
-<br><br>
 
-<input type="button" value="Logout"
-     onclick="window.location.href = '${logout}'"/>
+
+<c:url value="/logout" var="logoutUrl" />
+<form id="logout" action="${logoutUrl}" method="post" >
+  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+</form>
+<c:if test="${pageContext.request.userPrincipal.name != null}">
+	<a href="javascript:document.getElementById('logout').submit()">Logout</a>
+</c:if>
+
 
 
 

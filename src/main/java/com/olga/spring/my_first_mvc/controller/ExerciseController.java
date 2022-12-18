@@ -44,67 +44,57 @@ public class ExerciseController {
         return topicMap;
     }
 
-
-//    @RequestMapping("/showExercises")
-//    public String showAllExercises(Model model){
-//
-//        allExercises =exercisesService.getAllExercises();
-//        model.addAttribute("allEx", allExercises);
-//
-//        return "all-exercise-names";
-////         чтобы view мог отобразить значения полей "темы" нужно в методе контроллера создать model
-////          и добавить темы в качестве атрибутов этой модели
-//    }
-
-        @RequestMapping("/showExercises/{topicId}")
+    @RequestMapping("/guest/showExercises/{topicId}")
     public String showExercisesByTopic(@PathVariable int topicId, Model model) {
-            exercisesById = exercisesService.getExercisesById(topicId);
-            model.addAttribute("exById", exercisesById);
-
-            // model.addAttribute("topId", topicId);
-
-
-        return "all-exercise-names";
+        exercisesById = exercisesService.getExercisesById(topicId);
+        model.addAttribute("exById", exercisesById);
+        // model.addAttribute("topId", topicId);
+        return "guest-exercise-names";
     }
 
-    @RequestMapping("/addNewExercise")
+    @RequestMapping("/admin/showExercises/{topicId}")
+    public String showExercisesByTopicToAdmin(@PathVariable int topicId, Model model) {
+        exercisesById = exercisesService.getExercisesById(topicId);
+        model.addAttribute("exById", exercisesById);
+        // model.addAttribute("topId", topicId);
+        return "admin-exercise-names";
+    }
+
+    @RequestMapping("/admin/addNewExercise")
     public String addNewExercise(Model model){
         Exercises exercise = new Exercises();
-
         createMap();
-
         model.addAttribute("exercise", exercise);
         model.addAttribute("topics", topicMap);
 
-
        //return "all-test";
-        return "exercises-info";
+        return "admin-exercises-info";
     }
 
-    @RequestMapping("/saveExercise")
+    @RequestMapping("/admin/saveExercise")
     public String saveExercise(@ModelAttribute("exercise") Exercises exercises){
 
         exercisesService.saveExercise(exercises);
-        return "redirect:/showExercises/"+ exercises.getTopic().getId() ;
+        return "redirect:/admin/showExercises/"+ exercises.getTopic().getId() ;
     }
 
-    @RequestMapping("/updateInfoExercise")
+    @RequestMapping("/admin/updateInfoExercise")
     public String updateExercise(@RequestParam("exId") int id, Model model){
         Exercises exercises = exercisesService.getExercise(id);
        // model.addAttribute("exercise", exercises);
         createMap();
         model.addAttribute("exercise", exercises);
         model.addAttribute("topics", topicMap);
-        return "exercises-info";
+        return "admin-exercises-info";
     }
 
     //////////////////////////////////////////
-    @RequestMapping("/deleteExercise")
+    @RequestMapping("/admin/deleteExercise")
     public String deleteExercise(@RequestParam("exId") int id){
         int topicID =     exercisesService.getExercise(id).getTopic().getId();
 
         exercisesService.deleteExercise(id);
-        return "redirect:/showExercises/"  + topicID;
+        return "redirect:/admin/showExercises/"  + topicID;
     }
 
 

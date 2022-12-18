@@ -9,7 +9,7 @@
 <h2>Sentences Info</h2>
 <br>
 
-<form:form action="/addNewSentence/${topicId}/saveSentence" modelAttribute="sentence">
+<form:form action="/admin/addNewSentence/${topicId}/admin/saveSentence" modelAttribute="sentence">
 
         <form:hidden path="id"/>
 

@@ -24,11 +24,11 @@
     <c:forEach var="sentById" items="${sentById}">
 
 
-          <c:url var="updateButton" value="/updateInfoSentences/${topicId}">
+          <c:url var="updateButton" value="/admin/updateInfoSentences/${topicId}">
                 <c:param name="sentId" value="${sentById.id}"/>
           </c:url>
 
-          <c:url var="deleteButton" value="/deleteSentence/${topicId}">
+          <c:url var="deleteButton" value="/admin/deleteSentence/${topicId}">
                 <c:param name="sentId" value="${sentById.id}"/>
           </c:url>
 
@@ -61,7 +61,7 @@
 </table>
 
                 <br>
-                    <c:url var="addNewSentence" value="/addNewSentence/${topicId}/${exerciseId}">
+                    <c:url var="addNewSentence" value="/admin/addNewSentence/${topicId}/${exerciseId}">
                     </c:url>
                     <input type="button" value="Add"
                     onclick="window.location.href = '${addNewSentence}'"/>
@@ -69,7 +69,7 @@
                 <br>
                 <br>
 
-                     <c:url var="chooseExercise" value="/showExercises/${topicId}">
+                     <c:url var="chooseExercise" value="/admin/showExercises/${topicId}">
                      </c:url>
                      <input type="button" value="Return to exercises"
                      onclick="window.location.href = '${chooseExercise}'"/>
@@ -77,7 +77,7 @@
                 <br>
                 <br>
 
-                     <c:url var="chooseTopic" value="/">
+                     <c:url var="chooseTopic" value="/admin">
                      </c:url>
                      <input type="button" value="Return to topics"
                      onclick="window.location.href = '${chooseTopic}'"/>

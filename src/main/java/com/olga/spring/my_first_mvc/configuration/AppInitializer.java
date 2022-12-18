@@ -7,12 +7,12 @@ public class AppInitializer extends
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[] { HibernateConfig.class };
+        return new Class[] { HibernateConfig.class, WebMvcConfig.class   };
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[] { WebMvcConfig.class };
+        return null;
     }
 
     @Override

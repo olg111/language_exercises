@@ -16,11 +16,11 @@
 
     <c:forEach var="ex" items="${exById}">
 
-          <c:url var="updateButton" value="/updateInfoExercise">
+          <c:url var="updateButton" value="/admin/updateInfoExercise">
                 <c:param name="exId" value="${ex.id}"/>
           </c:url>
 
-          <c:url var="deleteButton" value="/deleteExercise">
+          <c:url var="deleteButton" value="/admin/deleteExercise">
                 <c:param name="exId" value="${ex.id}"/>
           </c:url>
 
@@ -28,7 +28,7 @@
 
 
             <tr>
-                <td> <a href="/showExercises/${ex.topic.id}/showSentences/${ex.id}">${ex.name}</a></td>
+                <td> <a href="/admin/showExercises/${ex.topic.id}/admin/showSentences/${ex.id}">${ex.name}</a></td>
 
                 <td>
                       <input type="button" value="Update"
@@ -48,7 +48,7 @@
 </table>
 
                 <br>
-                    <c:url var="addNewExercise" value="/addNewExercise">
+                    <c:url var="addNewExercise" value="/admin/addNewExercise">
                     </c:url>
                     <input type="button" value="Add"
                     onclick="window.location.href = '${addNewExercise}'"/>
@@ -57,7 +57,7 @@
                 <br>
 
 
-                     <c:url var="chooseTopic" value="/">
+                     <c:url var="chooseTopic" value="/admin">
                      </c:url>
                      <input type="button" value="Return to topics"
                       onclick="window.location.href = '${chooseTopic}'"/>

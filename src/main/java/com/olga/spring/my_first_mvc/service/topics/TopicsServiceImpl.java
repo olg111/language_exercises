@@ -57,7 +57,6 @@ public class TopicsServiceImpl implements TopicsService {
             exercisesService.deleteExercise(ex.getId());
         }
         topicsDAO.deleteTopic(id);
-
     }
 
 }

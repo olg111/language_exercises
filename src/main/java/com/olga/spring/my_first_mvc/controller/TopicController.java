@@ -22,58 +22,60 @@ public class TopicController {
     private TopicsService topicsService;
 
 
-    @RequestMapping("/")
-    public String showAllTopics(Model model){
-
+    @RequestMapping("/admin")
+    public String showAllTopicsToAdmin(Model model){
         List<Topics> allTopics =topicsService.getAllTopics();
         model.addAttribute("allTop", allTopics);
         System.out.println(allTopics.get(0).getId());
 
-        return "all-topics";
+        return "admin-topics";
+//         чтобы view мог отобразить значения полей "темы" нужно в методе контроллера создать model
+//          и добавить темы в качестве атрибутов этой модели
+    }
+
+    @RequestMapping("/guest")
+    public String showAllTopicsToGuest(Model model){
+        List<Topics> allTopics =topicsService.getAllTopics();
+        model.addAttribute("allTop", allTopics);
+        System.out.println(allTopics.get(0).getId());
+
+        return "guest-topics";
 //         чтобы view мог отобразить значения полей "темы" нужно в методе контроллера создать model
 //          и добавить темы в качестве атрибутов этой модели
     }
     ///////////////////////////////////////////////////
 
-    @RequestMapping("/addNewTopic")
+    @RequestMapping("/admin/addNewTopic")
     public String addNewTopic(Model model){
         Topics topics = new Topics();
         model.addAttribute("topic", topics);
 
-
-        return "topics-info";
-
+        return "admin-topics-info";
     }
 
-    @RequestMapping("/saveTopic")
+    @RequestMapping("/admin/saveTopic")
     public String saveTopic(@ModelAttribute("topic") Topics topics){
-
         topicsService.saveTopic(topics);
 
-        return "redirect:/";
+        return "redirect:/admin";
     }
 
-    @RequestMapping("/updateInfoTopic")
+    @RequestMapping("/admin/updateInfoTopic")
     public String updateTopic(@RequestParam("topId") int id, Model model){
-
         Topics topics = topicsService.getTopic(id);
         model.addAttribute("topic", topics);
-        return "topics-info";
+
+        return "admin-topics-info";
     }
 
 
-    @RequestMapping("/deleteTopic")
+    @RequestMapping("/admin/deleteTopic")
     public String deleteTopic(@RequestParam("topId") int id){
-
         topicsService.deleteTopic(id);
-        return "redirect:/";
+
+        return "redirect:/admin";
     }
 
-//    @RequestMapping("/logout")
-//    public String logout(){
-//
-//        return "logout";
-//    }
 
 
 
