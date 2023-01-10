@@ -95,13 +95,16 @@ public class SentenceController {
         model.addAttribute("sentenceMap", sentenceMap);
         model.addAttribute("topicId", topicId);
         model.addAttribute("exerciseId", exerciseId);
+
         return "admin-sentences-info";
     }
 
     @RequestMapping("/admin/addNewSentence/{topicId}/admin/saveSentence")
-    public String saveSentence(@PathVariable int topicId, @ModelAttribute("sentence") Sentences sentences, Model model){
-      sentencesService.saveSentence(sentences);
-      answersService.saveAnswers(sentences);
+    public String saveSentence(@PathVariable int topicId,  @ModelAttribute("sentence") Sentences sentences, Model model){
+
+        sentencesService.saveSentence(sentences);
+
+
       model.addAttribute("topicId", topicId);
        // return "redirect:/showExercises/"+ topicId + "/showSentences/" + sentences.getExerciseId();
         return "redirect:/admin/showExercises/"+ topicId + "/admin/showSentences/" + sentences.getExercise().getId();

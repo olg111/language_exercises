@@ -36,14 +36,12 @@ public class SentencesDAOImpl implements SentencesDAO {
         List<Sentences> allSentencesById = query.getResultList();
         return allSentencesById;
 
-
     }
 
     @Override
     public void saveSentence(Sentences sentences) {
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(sentences);
-
     }
 
     @Override
