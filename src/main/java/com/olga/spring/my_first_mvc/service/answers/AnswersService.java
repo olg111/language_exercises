@@ -12,12 +12,4 @@ public interface AnswersService {
 
 
 
-
-    public void splitSentence(int exerciseId);
-
-
-
-
-    //public Answers getAnswer(int id);
-
 }

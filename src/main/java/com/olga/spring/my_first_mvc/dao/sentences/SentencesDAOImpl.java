@@ -38,6 +38,8 @@ public class SentencesDAOImpl implements SentencesDAO {
 
     }
 
+
+
     @Override
     public void saveSentence(Sentences sentences) {
         Session session = sessionFactory.getCurrentSession();

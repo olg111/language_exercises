@@ -26,44 +26,11 @@ public class AnswersServiceImpl implements AnswersService {
 
 
 
-    public List<Sentences> sentencesList(int exerciseId) {
-        return sentencesDAO.getSentenceByExId(exerciseId);
-    }
-
-   List<List<HashMap<String, String>>> allListsHashMap = new ArrayList<List<HashMap<String, String>>>();
 
 
-    //"I /{like}/ cats and he /{likes}/ dogs."
-    public void splitSentence(int exerciseId) {
-        String regex = "[{](.*?)[}]";
-        String[] myText;
-        List<Sentences> sentencesListByExId = sentencesList(exerciseId);
 
-        for (int i = 0; i < sentencesListByExId.size(); i++) {
 
-            myText = sentencesListByExId.get(i).toString().split("/");
-            List<HashMap<String, String>> listHashMap = new ArrayList<>();
 
-            for (int f = 0; f < myText.length; f++) {
-                HashMap<String, String> hashMap = new HashMap<>();
-
-                Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
-                Matcher matcher = pattern.matcher(myText[f]);
-                if (matcher.find()) {
-                    hashMap.put("type", "input");
-                    hashMap.put("content", matcher.group(1));
-                    //  listHashMap.add(hashMap);
-                } else {
-                    hashMap.put("type", "text");
-                    hashMap.put("content", myText[f]);
-                    //  listHashMap.add(hashMap);
-                }
-                listHashMap.add(hashMap);
-            }
-            allListsHashMap.add(listHashMap);
-        }
-        System.out.println(allListsHashMap);
-    }
 
 }
 

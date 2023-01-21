@@ -7,9 +7,11 @@ import java.util.List;
 
 public interface SentencesDAO {
 
-    public List<Sentences> getAllSentences();
+    public List<Sentences> getAllSentences(); // ??? ужен ли метод?
 
     public List<Sentences> getSentenceByExId(int exerciseId); //
+
+
 
     public void saveSentence(Sentences sentences);
 

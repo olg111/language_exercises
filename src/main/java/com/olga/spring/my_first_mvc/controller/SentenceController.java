@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,10 +32,11 @@ public class SentenceController {
     private AnswersService answersService;
 
 
-    List<Sentences> allSentences;
+
     List<Sentences> sentencesById;
 
     Map<Integer, String> sentenceMap = new HashMap<>();
+    List<List<HashMap<String, String>>> allListsHashMap = new ArrayList<List<HashMap<String, String>>>();
 
 
     public Map <Integer, String> createSentenceMap(){
@@ -63,15 +65,18 @@ public class SentenceController {
 //        return "admin-sentences-names";
 //    }
 
-
     @RequestMapping("/guest/showExercises/{topicId}/guest/showSentences/{exerciseId}")
     public String showSentencesByExerciseToGuest(@PathVariable int topicId, @PathVariable int exerciseId, Model model) {
-           sentencesById = sentencesService.getSentenceByExId(exerciseId);
+          // sentencesById = sentencesService.getSentenceByExId(exerciseId);
+
         String exName = exercisesService.getExercise(exerciseId).getName();
+
+        allListsHashMap = sentencesService.splitSentence(exerciseId);
             model.addAttribute("sentById", sentencesById);
             model.addAttribute("exerciseId", exerciseId);
             model.addAttribute("topicId", topicId);
             model.addAttribute("exName", exName);
+            model.addAttribute("allListsHashMap", allListsHashMap);
             return "guest-sentences-names";
     }
 

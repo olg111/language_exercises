@@ -1,28 +1,39 @@
 [
-  [{
-    "type": "text",
-    "content": "I"
-  }, {
-    "type": "input",
-    "content": "like"
-  },{
-    "type": "text",
-    "content": "cats and he"
-  },{
-    "type": "input",
-    "content": "likes"
-  },{
-    "type": "text",
-    "content": "dog"
-  }],
-  [{
-    "type": "text",
-    "content": "I"
-  }, {
-    "type": "input",
-    "content": "like"
-  },{
-    "type": "text",
-    "content": "cats"
-  }]
+  {
+    "hint": "hint1",
+    "sentence": [
+      {
+      "type": "text",
+      "content": "I"
+    }, {
+      "type": "input",
+      "content": "like"
+    },{
+      "type": "text",
+      "content": "cats and he"
+    },{
+      "type": "input",
+      "content": "likes"
+    },{
+      "type": "text",
+      "content": "dog"
+    }
+    ]
+  },
+
+  {
+    "hint": "hint2",
+    "sentence": [{
+      "type": "text",
+      "content": "I"
+    }, {
+      "type": "input",
+      "content": "like"
+    },{
+      "type": "text",
+      "content": "cats"
+    }]
+  }
+
+
 ]
