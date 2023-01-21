@@ -16,7 +16,11 @@
     <c:forEach var="topic" items="${allTop}">
 
     <tr>
-        <td> <a href="/guest/showExercises/${topic.id}">${topic.name}</a></td>
+        <td>
+            <li>
+                <a href="/guest/showExercises/${topic.id}">${topic.name}</a>
+            </li>
+        </td>
     </tr>
 
     </c:forEach>

@@ -6,7 +6,7 @@
 <html>
 <body>
 
-<h2>Fill in the sentences</h2>
+<h2>Add new sentences</h2>
 <br>
 
 
@@ -36,12 +36,12 @@
 
 
             <tr>
-                <td> <a href="">${sentById.sentence}</a></td>
-
                 <td>
-                      <input type="button" value="check">
-
+                    <li>
+                        <a href="">${sentById.sentence}</a>
+                    </li>
                 </td>
+
 
                 <td>
                       <input type="button" value="Update"

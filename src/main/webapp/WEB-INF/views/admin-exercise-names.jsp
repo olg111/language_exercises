@@ -6,7 +6,7 @@
 <html>
 <body>
 
-<h2>Choose an exercise</h2>
+<h2>Add new exercises</h2>
 <br>
 
 <table>
@@ -28,8 +28,11 @@
 
 
             <tr>
-                <td> <a href="/admin/showExercises/${ex.topic.id}/admin/showSentences/${ex.id}">${ex.name}</a></td>
+                <td>
+                    <li>
 
+                        <a href="/admin/showExercises/${ex.topic.id}/admin/showSentences/${ex.id}">${ex.name}</a></td>
+                    </li>
                 <td>
                       <input type="button" value="Update"
                       onclick="window.location.href = '${updateButton}'"/>

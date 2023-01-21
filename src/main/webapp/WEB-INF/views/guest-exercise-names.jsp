@@ -17,7 +17,11 @@
     <c:forEach var="ex" items="${exById}">
 
             <tr>
-                <td> <a href="/guest/showExercises/${ex.topic.id}/guest/showSentences/${ex.id}">${ex.name}</a></td>
+                <td>
+                    <li>
+                        <a href="/guest/showExercises/${ex.topic.id}/guest/showSentences/${ex.id}">${ex.name}</a>
+                    </li>
+                </td>
              </tr>
 
     </c:forEach>

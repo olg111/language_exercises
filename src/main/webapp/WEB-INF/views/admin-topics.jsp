@@ -6,7 +6,7 @@
 <html>
 <body>
 
-<h2>Choose a topic</h2>
+<h2>Add new topics</h2>
 <br>
 
 <table>
@@ -26,8 +26,10 @@
 
 
       <tr>
-                <td> <a href="/admin/showExercises/${topic.id}">${topic.name}</a></td>
-
+                <td>
+                    <li>
+                        <a href="/admin/showExercises/${topic.id}">${topic.name}</a></td>
+                    </li>
                 <td>
                       <input type="button" value="Update"
                       onclick="window.location.href = '${updateButton}'"/>
