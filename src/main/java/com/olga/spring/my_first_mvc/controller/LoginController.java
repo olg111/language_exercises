@@ -14,11 +14,6 @@ import java.util.List;
 @Controller
 public class LoginController {
 
-
-
-
-
-
     @RequestMapping(value = { "/"}, method = RequestMethod.GET)
     public ModelAndView welcomePage() {
 
@@ -26,22 +21,6 @@ public class LoginController {
         model.setViewName("welcomePage");
         return model;
     }
-
-//    @RequestMapping(value = { "/guest"}, method = RequestMethod.GET)
-//    public ModelAndView guestTopics() {
-//
-//        ModelAndView model = new ModelAndView();
-//        model.setViewName("guest-topics");
-//        return model;
-//    }
-
-
-//    @RequestMapping(value = { "/admin"}, method = RequestMethod.GET)
-//    public ModelAndView homePage() {
-//        ModelAndView model = new ModelAndView();
-//        model.setViewName("all-topics");
-//        return model;
-//    }
 
     @RequestMapping(value = "/loginPage", method = RequestMethod.GET)
     public ModelAndView loginPage(@RequestParam(value = "error",required = false) String error,

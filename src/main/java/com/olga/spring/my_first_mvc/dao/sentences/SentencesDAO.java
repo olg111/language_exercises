@@ -11,13 +11,9 @@ public interface SentencesDAO {
 
     public List<Sentences> getSentenceByExId(int exerciseId); //
 
-
-
     public void saveSentence(Sentences sentences);
 
     public Sentences getSentence(int id);
-
-
 
     public void deleteSentence(int id);
 

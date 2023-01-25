@@ -27,11 +27,11 @@ public class ExercisesServiceImpl implements ExercisesService {
     private SentencesService sentencesService;
 
 
-    @Override
-    @Transactional
-    public List<Exercises> getAllExercises() {
-        return exercisesDAO.getAllExercises();
-    }
+//    @Override
+//    @Transactional
+//    public List<Exercises> getAllExercises() {
+//        return exercisesDAO.getAllExercises();
+//    }
 
     @Override
     @Transactional

@@ -25,12 +25,11 @@ public class TopicsDAOImpl implements TopicsDAO {
 
     public List<Topics> getAllTopics() {
         Session session = sessionFactory.getCurrentSession();
-
         Query<Topics> query = session.createQuery("from Topics", Topics.class);
         List<Topics> allTopics =  query.getResultList();
+
         return allTopics;
     }
-
 
     @Override
     public void saveTopic(Topics topics) {
@@ -42,6 +41,7 @@ public class TopicsDAOImpl implements TopicsDAO {
     public Topics getTopic(int id) {
         Session session= sessionFactory.getCurrentSession();
         Topics topics = session.get(Topics.class, id);
+
         return topics;
     }
 

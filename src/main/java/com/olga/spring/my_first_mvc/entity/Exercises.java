@@ -16,9 +16,6 @@ public class Exercises {
     @Column(name = "exercise_name")
     private String name;
 
-//    @Column(name = "topic_id")
-//    private int topicId   ;
-
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
     @JoinColumn(name = "topic_id")
@@ -53,8 +50,6 @@ public class Exercises {
     public void setName(String name) {
         this.name = name;
     }
-
-
 
     public Topics getTopic() {
         return topic;

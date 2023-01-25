@@ -8,8 +8,6 @@ import java.util.Map;
 public interface TopicsService {
     public List<Topics> getAllTopics();
 
-
-
     public  void saveTopic(Topics topics);
 
     public Topics getTopic(int id);

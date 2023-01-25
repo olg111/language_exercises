@@ -6,7 +6,7 @@ import com.olga.spring.my_first_mvc.entity.Topics;
 import java.util.List;
 
 public interface ExercisesService {
-    public List<Exercises> getAllExercises();
+//    public List<Exercises> getAllExercises();
 
     public List<Exercises> getExercisesById(int topicId); //
 

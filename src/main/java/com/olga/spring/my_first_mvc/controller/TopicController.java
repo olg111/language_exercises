@@ -21,7 +21,6 @@ public class TopicController {
     @Autowired
     private TopicsService topicsService;
 
-
     @RequestMapping("/admin")
     public String showAllTopicsToAdmin(Model model){
         List<Topics> allTopics =topicsService.getAllTopics();
@@ -40,10 +39,8 @@ public class TopicController {
         System.out.println(allTopics.get(0).getId());
 
         return "guest-topics";
-//         чтобы view мог отобразить значения полей "темы" нужно в методе контроллера создать model
-//          и добавить темы в качестве атрибутов этой модели
     }
-    ///////////////////////////////////////////////////
+
 
     @RequestMapping("/admin/addNewTopic")
     public String addNewTopic(Model model){
@@ -68,15 +65,12 @@ public class TopicController {
         return "admin-topics-info";
     }
 
-
     @RequestMapping("/admin/deleteTopic")
     public String deleteTopic(@RequestParam("topId") int id){
         topicsService.deleteTopic(id);
 
         return "redirect:/admin";
     }
-
-
 
 
 }

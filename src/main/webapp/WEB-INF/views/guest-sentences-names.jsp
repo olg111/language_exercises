@@ -101,7 +101,7 @@
               } else {
               markerList[i].classList.remove("correctAnswer");
               markerList[i].classList.add("incorrectAnswer");
-               markerList[i].innerHTML = "try again";
+               markerList[i].innerHTML = inputAnswerList[i].dataset.rightanswer.trim();
               }
 
 

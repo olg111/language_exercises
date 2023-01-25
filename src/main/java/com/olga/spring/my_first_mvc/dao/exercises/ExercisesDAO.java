@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ExercisesDAO {
 
-    public List<Exercises> getAllExercises();
+//    public List<Exercises> getAllExercises();
 
     public List<Exercises> getExercisesById(int topicId); //
 

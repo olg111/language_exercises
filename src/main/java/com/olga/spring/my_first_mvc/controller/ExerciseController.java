@@ -20,23 +20,14 @@ import java.util.Map;
 @Controller
 public class ExerciseController {
 
-
-
     @Autowired
     private ExercisesService exercisesService;
-
 
     @Autowired
     private TopicsService topicsService;
 
-
-
-    List<Exercises> allExercises;
     List<Exercises> exercisesById;
-
     Map<Integer, String> topicMap = new HashMap<>();
-
-
     public Map <Integer, String> createMap(){
         for (Topics top: topicsService.getAllTopics() ) {
             topicMap.put(top.getId(), top.getName());
@@ -48,7 +39,7 @@ public class ExerciseController {
     public String showExercisesByTopic(@PathVariable int topicId, Model model) {
         exercisesById = exercisesService.getExercisesById(topicId);
         model.addAttribute("exById", exercisesById);
-        // model.addAttribute("topId", topicId);
+
         return "guest-exercise-names";
     }
 
@@ -56,7 +47,7 @@ public class ExerciseController {
     public String showExercisesByTopicToAdmin(@PathVariable int topicId, Model model) {
         exercisesById = exercisesService.getExercisesById(topicId);
         model.addAttribute("exById", exercisesById);
-        // model.addAttribute("topId", topicId);
+
         return "admin-exercise-names";
     }
 
@@ -67,7 +58,6 @@ public class ExerciseController {
         model.addAttribute("exercise", exercise);
         model.addAttribute("topics", topicMap);
 
-       //return "all-test";
         return "admin-exercises-info";
     }
 
@@ -75,30 +65,26 @@ public class ExerciseController {
     public String saveExercise(@ModelAttribute("exercise") Exercises exercises){
 
         exercisesService.saveExercise(exercises);
+
         return "redirect:/admin/showExercises/"+ exercises.getTopic().getId() ;
     }
 
     @RequestMapping("/admin/updateInfoExercise")
     public String updateExercise(@RequestParam("exId") int id, Model model){
         Exercises exercises = exercisesService.getExercise(id);
-       // model.addAttribute("exercise", exercises);
         createMap();
         model.addAttribute("exercise", exercises);
         model.addAttribute("topics", topicMap);
+
         return "admin-exercises-info";
     }
 
-    //////////////////////////////////////////
     @RequestMapping("/admin/deleteExercise")
     public String deleteExercise(@RequestParam("exId") int id){
         int topicID =     exercisesService.getExercise(id).getTopic().getId();
-
         exercisesService.deleteExercise(id);
+
         return "redirect:/admin/showExercises/"  + topicID;
     }
-
-
-
-
 
 }

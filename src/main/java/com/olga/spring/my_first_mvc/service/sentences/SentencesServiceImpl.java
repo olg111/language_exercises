@@ -1,6 +1,6 @@
 package com.olga.spring.my_first_mvc.service.sentences;
 
-import com.olga.spring.my_first_mvc.dao.answers.AnswersDAO;
+
 import com.olga.spring.my_first_mvc.dao.sentences.SentencesDAO;
 import com.olga.spring.my_first_mvc.entity.Sentences;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +20,6 @@ public class SentencesServiceImpl implements SentencesService {
     //чтобы вызвать метод из DAO прописываем зависимость от него
     @Autowired
     private SentencesDAO sentencesDAO;
-    @Autowired
-    private AnswersDAO answersDAO;
-
 
     @Override
     @Transactional
@@ -36,10 +33,8 @@ public class SentencesServiceImpl implements SentencesService {
         return sentencesDAO.getSentenceByExId(exerciseId);
     }
 
-
     @Transactional
     public List<List<HashMap<String, String>>> splitSentence(int exerciseId) {
-
         //"I /{like}/ cats and he /{likes}/ dogs."
         String regex = "[{](.*?)[}]";
         String[] myText;
@@ -85,23 +80,10 @@ public class SentencesServiceImpl implements SentencesService {
         return  allListsHashMap;
     }
 
-//    @Override
-//    @Transactional
-//    public String getHintBySentId(int  exerciseId ) {
-//
-//        List<Sentences> sentencesListByExId = getSentenceByExId(exerciseId);
-//        String hint = null;
-//
-//            for (int i = 0; i < sentencesListByExId.size(); i++) {
-//                hint = sentencesListByExId.get(i).getHint();
-//            }
-//        return hint;
-//    }
 
     @Override
     @Transactional
     public void saveSentence(Sentences sentences) {
-
         sentencesDAO.saveSentence(sentences);
 
     }
@@ -115,7 +97,6 @@ public class SentencesServiceImpl implements SentencesService {
     @Override
     @Transactional
     public void deleteSentence(int id) {
-        answersDAO.deleteAnswerBySentenceId(id);
         sentencesDAO.deleteSentence(id);
 
     }

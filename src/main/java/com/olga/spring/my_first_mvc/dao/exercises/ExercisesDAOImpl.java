@@ -20,15 +20,15 @@ public class ExercisesDAOImpl implements ExercisesDAO {
     // creating beans from applicationContext. to create session.to work with the database
 
 
-    @Override
-
-    public List<Exercises> getAllExercises() {
-        Session session = sessionFactory.getCurrentSession();
-
-        Query<Exercises> query = session.createQuery("from Exercises", Exercises.class);
-        List<Exercises> allExercises =  query.getResultList();
-        return allExercises;
-    }
+//    @Override
+//
+//    public List<Exercises> getAllExercises() {
+//        Session session = sessionFactory.getCurrentSession();
+//
+//        Query<Exercises> query = session.createQuery("from Exercises", Exercises.class);
+//        List<Exercises> allExercises =  query.getResultList();
+//        return allExercises;
+//    }
 
     @Override
     public List<Exercises> getExercisesById(int topicId) {
