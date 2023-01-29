@@ -16,64 +16,55 @@
     <c:forEach var="topic" items="${allTop}">
 
 
-      <c:url var="updateButton" value="/admin/updateInfoTopic">
+        <c:url var="updateButton" value="/admin/updateInfoTopic">
             <c:param name="topId" value="${topic.id}"/>
-      </c:url>
+        </c:url>
 
-      <c:url var="deleteButton" value="/admin/deleteTopic">
+        <c:url var="deleteButton" value="/admin/deleteTopic">
             <c:param name="topId" value="${topic.id}"/>
-      </c:url>
+        </c:url>
 
 
-      <tr>
-                <td>
-                    <li>
-                        <a href="/admin/showExercises/${topic.id}">${topic.name}</a></td>
-                    </li>
-                <td>
-                      <input type="button" value="Update"
-                      onclick="window.location.href = '${updateButton}'"/>
-                </td>
+        <tr>
+            <td>
+                <li>
+                    <a href="/admin/showExercises/${topic.id}">${topic.name}</a>
+            </td>
+            </li>
+            <td>
+                <input type="button" value="Update"
+                       onclick="window.location.href = '${updateButton}'"/>
+            </td>
 
-                <td>
-                      <input type="button" value="Delete"
-                      onclick="window.location.href = '${deleteButton}'"/>
-                </td>
+            <td>
+                <input type="button" value="Delete"
+                       onclick="window.location.href = '${deleteButton}'"/>
+            </td>
 
-      </tr>
+        </tr>
 
     </c:forEach>
 
 </table>
 
 <br>
- <c:url var="addNewTopic" value="/admin/addNewTopic"></c:url>
-
-
-
-
-
-
+<c:url var="addNewTopic" value="/admin/addNewTopic"></c:url>
 
 
 <input type="button" value="Add"
-    onclick="window.location.href = '${addNewTopic}'"/>
+       onclick="window.location.href = '${addNewTopic}'"/>
 
 
 <br><br>
 
 
-
-
-<c:url value="/logout" var="logoutUrl" />
-<form id="logout" action="${logoutUrl}" method="post" >
-  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+<c:url value="/logout" var="logoutUrl"/>
+<form id="logout" action="${logoutUrl}" method="post">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
 <c:if test="${pageContext.request.userPrincipal.name != null}">
-	<a href="javascript:document.getElementById('logout').submit()">Logout</a>
+    <a href="javascript:document.getElementById('logout').submit()">Logout</a>
 </c:if>
-
-
 
 
 </body>

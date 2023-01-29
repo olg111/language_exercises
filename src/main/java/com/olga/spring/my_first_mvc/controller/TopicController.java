@@ -25,13 +25,14 @@ public class TopicController {
     public String showAllTopicsToAdmin(Model model){
         List<Topics> allTopics =topicsService.getAllTopics();
         model.addAttribute("allTop", allTopics);
+//        поубирать все SOP
         System.out.println(allTopics.get(0).getId());
 
         return "admin-topics";
 //         чтобы view мог отобразить значения полей "темы" нужно в методе контроллера создать model
 //          и добавить темы в качестве атрибутов этой модели
     }
-
+// разделить обработчики для GET/POST/DELETE/PUT (касается всех контроллеров)
     @RequestMapping("/guest")
     public String showAllTopicsToGuest(Model model){
         List<Topics> allTopics =topicsService.getAllTopics();
@@ -46,6 +47,7 @@ public class TopicController {
     public String addNewTopic(Model model){
         Topics topics = new Topics();
         model.addAttribute("topic", topics);
+//        не уверен, что этот метод нужен
 
         return "admin-topics-info";
     }

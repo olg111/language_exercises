@@ -4,29 +4,23 @@
 <!DOCTYPE html>
 
 <html>
-<body>
-
-<h2>Dear Guest, Choose a topic</h2>
-<br>
-
-<table>
-    <tr>
-        <th>Topics</th>
-    </tr>
-    <c:forEach var="topic" items="${allTop}">
-
-    <tr>
-        <td>
-            <li>
-                <a href="/guest/showExercises/${topic.id}">${topic.name}</a>
-            </li>
-        </td>
-    </tr>
-
-    </c:forEach>
-
-</table>
-
-</body>
-
+	<body>
+		<h2>Dear Guest, Choose a topic</h2>
+		<br>
+		<table>
+		    <tr>
+		        <th>Topics</th>
+		    </tr>
+		    <c:forEach var="topic" items="${allTop}">
+		        <tr>
+		            <td>
+		                <!--          li может находится только в ul. Проверь все файлы -->
+		                <li>
+		                    <a href="/guest/showExercises/${topic.id}">${topic.name}</a>
+		                </li>
+		            </td>
+		        </tr>
+		    </c:forEach>
+		</table>
+	</body>
 </html>

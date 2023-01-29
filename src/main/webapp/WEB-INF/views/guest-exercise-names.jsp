@@ -8,7 +8,7 @@
 
 <h2>Dear Guest, Choose an exercise</h2>
 <br>
-
+<!--  придумать что показать юзеру если нету упражнений, топиков, предложений -->
 <table>
     <tr>
         <th>Exercises</th>
@@ -16,24 +16,25 @@
 
     <c:forEach var="ex" items="${exById}">
 
-            <tr>
-                <td>
-                    <li>
-                        <a href="/guest/showExercises/${ex.topic.id}/guest/showSentences/${ex.id}">${ex.name}</a>
-                    </li>
-                </td>
-             </tr>
+        <tr>
+            <td>
+                <li>
+                    <a href="/guest/showExercises/${ex.topic.id}/guest/showSentences/${ex.id}">${ex.name}</a>
+                </li>
+            </td>
+        </tr>
 
     </c:forEach>
 
 </table>
 
-                <br>
+<br>
 
-                     <c:url var="chooseTopic" value="/guest">
-                     </c:url>
-                     <input type="button" value="Return to topics"
-                      onclick="window.location.href = '${chooseTopic}'"/>
+<!--  это не нужно, можно напрямую использовать строку в href -->
+<c:url var="chooseTopic" value="/guest">
+</c:url>
+<input type="button" value="Return to topics"
+       onclick="window.location.href = '${chooseTopic}'"/>
 
 </body>
 

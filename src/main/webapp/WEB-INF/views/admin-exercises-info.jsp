@@ -11,23 +11,25 @@
 
 <form:form action="saveExercise" modelAttribute="exercise">
 
-        <form:hidden path="id"/>
-        New Exercise name <form:input path="name"/>
-        <br><br>
+    <form:hidden path="id"/>
+    New Exercise name
+    <form:input path="name"/>
+    <br><br>
 
 
-
-        Topic name (id) <form:select path ="topic.id">
-
-
-                       <form:options items="${topics}"/>
-
-        </form:select>
+    <!--  не уверен, что это работает. Не вижу в моделях этого-->
+    Topic name (id)
+    <form:select path="topic.id">
 
 
-        <br><br>
+        <form:options items="${topics}"/>
 
-         <input type="submit" value="OK">
+    </form:select>
+
+
+    <br><br>
+
+    <input type="submit" value="OK">
 
 
 </form:form>

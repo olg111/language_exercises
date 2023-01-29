@@ -20,7 +20,7 @@ public class Exercises {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
     @JoinColumn(name = "topic_id")
     private Topics topic;
-
+// удалить sentenceListExample, убрать комменты из энтити
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.REMOVE }
             , mappedBy = "exercise"

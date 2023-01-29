@@ -18,7 +18,7 @@ public class ExercisesDAOImpl implements ExercisesDAO {
     @Autowired
     private SessionFactory sessionFactory;
     // creating beans from applicationContext. to create session.to work with the database
-
+//   Поудалять комментарии
 
 //    @Override
 //
@@ -57,6 +57,7 @@ public class ExercisesDAOImpl implements ExercisesDAO {
     @Override
     public void deleteExercise(int id) {
         Session session= sessionFactory.getCurrentSession();
+//        удаляться ли сентенсы при удалении упражнения ?
         Query<Exercises> query = session.createQuery("delete from Exercises where id=:exerciseId");
         query.setParameter("exerciseId", id);
         query.executeUpdate();

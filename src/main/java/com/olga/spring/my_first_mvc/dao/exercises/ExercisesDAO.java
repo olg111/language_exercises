@@ -6,6 +6,7 @@ import com.olga.spring.my_first_mvc.entity.Topics;
 import java.util.List;
 
 public interface ExercisesDAO {
+// поудалять комментарии
 
 //    public List<Exercises> getAllExercises();
 

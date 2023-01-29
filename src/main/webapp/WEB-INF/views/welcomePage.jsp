@@ -3,19 +3,15 @@
 <%@page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
-<body>
+	<body>
 
-<h2>Welcome to English exercises</h2>
-
-<br>
-
-<h4>Welcome Admin</h4>
-<a href="${pageContext.request.contextPath}/loginPage">Login to Journal</a>
-
-<br>
-<h4>Welcome Guest</h4>
-<a href="${pageContext.request.contextPath}/guest">Guest</a>
-
-
-</body>
+		<h2>Welcome to English exercises</h2>
+		<br>
+		<!--  удалить упоминание админа на главной странице/Добавить описание как залогиниться в README -->
+		<h4>Welcome Admin</h4>
+		<a href="${pageContext.request.contextPath}/loginPage">Login to Journal</a>
+		<br>
+		<h4>Welcome Guest</h4>
+		<a href="${pageContext.request.contextPath}/guest">Guest</a>
+	</body>
 </html>

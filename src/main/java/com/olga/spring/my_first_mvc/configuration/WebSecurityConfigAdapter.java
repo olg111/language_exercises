@@ -25,15 +25,15 @@ public class WebSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/**").permitAll()
-                .antMatchers("/admin").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/", "/guest/**").permitAll()
+                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                 .and()
                 .formLogin().loginPage("/loginPage")
                 .defaultSuccessUrl("/admin")
                 .failureUrl("/loginPage?error")
                 .usernameParameter("username").passwordParameter("password")
                 .and()
-                .logout().logoutSuccessUrl("/loginPage?logout");
+                .logout().logoutSuccessUrl("/");
 
     }
 

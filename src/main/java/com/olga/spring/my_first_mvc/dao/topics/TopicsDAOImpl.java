@@ -1,6 +1,6 @@
 package com.olga.spring.my_first_mvc.dao.topics;
 
-
+// убрать не используемые импорты
 import com.olga.spring.my_first_mvc.dao.topics.TopicsDAO;
 import com.olga.spring.my_first_mvc.entity.Topics;
 import org.hibernate.Session;
@@ -48,6 +48,7 @@ public class TopicsDAOImpl implements TopicsDAO {
     @Override
     public void deleteTopic(int id) {
         Session session= sessionFactory.getCurrentSession();
+//        удаляться ли сентенсы и упражнения при удалении топика ?
         Query<Topics> query = session.createQuery("delete from Topics where id=:topicId");
         query.setParameter("topicId", id);
         query.executeUpdate();

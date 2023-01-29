@@ -46,7 +46,7 @@ public class SentencesServiceImpl implements SentencesService {
 
             myText = sentencesListByExId.get(i).getSentence().split("/");
             myHint = sentencesListByExId.get(i).getHint();
-
+//      почистить от комментов
 //            for (String s : myText ) {
 //                System.out.println(s);
 //
@@ -76,6 +76,7 @@ public class SentencesServiceImpl implements SentencesService {
             listHashMap.add(hintHashMap);
             allListsHashMap.add(listHashMap);
         }
+//        поудаялть SOP
         System.out.println(allListsHashMap);
         return  allListsHashMap;
     }

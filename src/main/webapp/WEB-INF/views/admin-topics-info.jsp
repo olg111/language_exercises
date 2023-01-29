@@ -11,12 +11,13 @@
 
 <form:form action="saveTopic" modelAttribute="topic">
 
-        <form:hidden path="id"/>
+    <form:hidden path="id"/>
 
-        New Topic <form:input path="name"/>
-        <br><br>
+    New Topic
+    <form:input path="name"/>
+    <br><br>
 
-         <input type="submit" value="OK">
+    <input type="submit" value="OK">
 
 
 </form:form>
