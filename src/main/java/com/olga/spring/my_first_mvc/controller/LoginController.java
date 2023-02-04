@@ -16,7 +16,6 @@ public class LoginController {
 
     @RequestMapping(value = { "/"}, method = RequestMethod.GET)
     public ModelAndView welcomePage() {
-//        не уверен, что у тебя есть такая страница. Наверное можно удалить
         ModelAndView model = new ModelAndView();
         model.setViewName("welcomePage");
         return model;

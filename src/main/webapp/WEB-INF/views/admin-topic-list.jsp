@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page isELIgnored="false" %>
 <!DOCTYPE html>
@@ -6,7 +7,7 @@
 <html>
 <body>
 
-<h2>Add new topics</h2>
+<h2>Topic list</h2>
 <br>
 
 <table>
@@ -20,25 +21,20 @@
             <c:param name="topId" value="${topic.id}"/>
         </c:url>
 
-        <c:url var="deleteButton" value="/admin/deleteTopic">
-            <c:param name="topId" value="${topic.id}"/>
-        </c:url>
-
-
         <tr>
             <td>
-                <li>
-                    <a href="/admin/showExercises/${topic.id}">${topic.name}</a>
+                &bull;    <a href="/admin/showExercises/${topic.id}">${topic.name}</a>
             </td>
-            </li>
+
             <td>
                 <input type="button" value="Update"
                        onclick="window.location.href = '${updateButton}'"/>
             </td>
 
             <td>
-                <input type="button" value="Delete"
-                       onclick="window.location.href = '${deleteButton}'"/>
+                <form:form action="/admin/deleteTopic/${topic.id}"  method="post">
+                    <input type="submit" value="Delete"/>
+	            </form:form>
             </td>
 
         </tr>

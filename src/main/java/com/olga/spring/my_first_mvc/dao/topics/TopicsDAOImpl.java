@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Map;
 
-@Repository  // спациализированный @Component
+@Repository
 public class TopicsDAOImpl implements TopicsDAO {
 
 
@@ -20,9 +20,7 @@ public class TopicsDAOImpl implements TopicsDAO {
     private SessionFactory sessionFactory;
     // creating beans from applicationContext. to create session.to work with the database
 
-
     @Override
-
     public List<Topics> getAllTopics() {
         Session session = sessionFactory.getCurrentSession();
         Query<Topics> query = session.createQuery("from Topics", Topics.class);
@@ -48,7 +46,7 @@ public class TopicsDAOImpl implements TopicsDAO {
     @Override
     public void deleteTopic(int id) {
         Session session= sessionFactory.getCurrentSession();
-//        удаляться ли сентенсы и упражнения при удалении топика ?
+//        удаляться ли сентенсы и упражнения при удалении топика ? ----да
         Query<Topics> query = session.createQuery("delete from Topics where id=:topicId");
         query.setParameter("topicId", id);
         query.executeUpdate();

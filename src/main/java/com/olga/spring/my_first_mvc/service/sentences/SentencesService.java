@@ -5,6 +5,7 @@ import com.olga.spring.my_first_mvc.entity.Topics;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface SentencesService {
     public List<Sentences> getAllSentences();
@@ -18,6 +19,8 @@ public interface SentencesService {
     public Sentences getSentence(int id);
 
     public void deleteSentence(int id);
+
+    public Map<Integer, String> createSentenceMap();
 
 
 

@@ -14,10 +14,7 @@
 		    <c:forEach var="topic" items="${allTop}">
 		        <tr>
 		            <td>
-		                <!--          li может находится только в ul. Проверь все файлы -->
-		                <li>
-		                    <a href="/guest/showExercises/${topic.id}">${topic.name}</a>
-		                </li>
+		                    &bull; <a href="/guest/showExercises/${topic.id}">${topic.name}</a>
 		            </td>
 		        </tr>
 		    </c:forEach>

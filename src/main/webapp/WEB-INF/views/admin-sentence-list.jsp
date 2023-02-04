@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page isELIgnored="false" %>
 <!DOCTYPE html>
@@ -6,7 +7,7 @@
 <html>
 <body>
 
-<h2>Add new sentences</h2>
+<h2>Sentence list</h2>
 <br>
 
 
@@ -26,16 +27,9 @@
             <c:param name="sentId" value="${sentById.id}"/>
         </c:url>
 
-        <c:url var="deleteButton" value="/admin/deleteSentence/${topicId}">
-            <c:param name="sentId" value="${sentById.id}"/>
-        </c:url>
-
-
-        <tr>
+       <tr>
             <td>
-                <li>
-                    <a href="">${sentById.sentence}</a>
-                </li>
+                &bull;    <a href="">${sentById.sentence}</a>
             </td>
 
 
@@ -45,8 +39,9 @@
             </td>
 
             <td>
-                <input type="button" value="Delete"
-                       onclick="window.location.href = '${deleteButton}'"/>
+                <form:form action="/admin/deleteSentence/${topicId}/${sentById.id}"  method="post">
+                       <input type="submit" value="Delete"/>
+                </form:form>
             </td>
 
         </tr>
@@ -62,21 +57,14 @@
 <input type="button" value="Add"
        onclick="window.location.href = '${addNewSentence}'"/>
 
-<br>
-<br>
 
-<c:url var="chooseExercise" value="/admin/showExercises/${topicId}">
-</c:url>
-<input type="button" value="Return to exercises"
-       onclick="window.location.href = '${chooseExercise}'"/>
+<br><br>
 
-<br>
-<br>
+       <a href="${pageContext.request.contextPath}/admin/showExercises/${topicId}">Return to exercises</a>
 
-<c:url var="chooseTopic" value="/admin">
-</c:url>
-<input type="button" value="Return to topics"
-       onclick="window.location.href = '${chooseTopic}'"/>
+<br><br>
+
+       <a href="${pageContext.request.contextPath}/admin">Return to topics</a>
 
 
 </body>

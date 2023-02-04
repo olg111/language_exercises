@@ -25,19 +25,17 @@
 		<h2>Dear Guest, Fill in the sentences</h2>
 		<br>
 
-
 		<table>
 
 		    <tr>
 		        <th>${exName}</th>
 		    </tr>
-		    <!--  Почистить документ от консоль логов, комментов, добавить ворматирование-->
 
 		    <c:forEach var="sentenceListHashMap" items="${allListsHashMap}" varStatus="status">
-		        <!--              <p>Индекс: ${status.getIndex()}</p> -->
 		        <tr>
 
 		            <td class="sentence-item">
+		                &bull;
 		                <c:forEach var="hashMap" items="${sentenceListHashMap}">
 		                    <c:choose>
 		                        <c:when test="${hashMap.type.equals('text')}">
@@ -60,34 +58,24 @@
 		                    <input type="button" value="check" onclick="checkAnswer(${status.getIndex()})">
 		                </div>
 		            </td>
-
-
 		        </tr>
 
 		    </c:forEach>
 
 		</table>
+
 		<br>
-		<c:url var="chooseExercise" value="/guest/showExercises/${topicId}">
-		</c:url>
-		<input type="button" value="Return to exercises"
-		       onclick="window.location.href = '${chooseExercise}'"/>
-		<br>
-		<br>
-		<c:url var="chooseTopic" value="/guest">
-		</c:url>
-		<input type="button" value="Return to topics"
-		       onclick="window.location.href = '${chooseTopic}'"/>
+		<a href="${pageContext.request.contextPath}/guest/showExercises/${topicId}">Return to exercises</a>
+		<br><br>
+		<a href="${pageContext.request.contextPath}/guest">Return to topics</a>
+
 		<script>
 		    function checkAnswer(index) {
-		//     форматирование, погугли как вынести жс в отдельные файлы
+
 		    let inputAnswerList = document.getElementsByClassName('answer-' + index);
 		    let markerList = document.getElementsByClassName('marker-' + index);
 		    console.log(inputAnswerList);
 		    console.log(markerList);
-
-
-
 
 		        for (var i = 0; i < Array.prototype.slice.call(inputAnswerList).length; i++) {
 

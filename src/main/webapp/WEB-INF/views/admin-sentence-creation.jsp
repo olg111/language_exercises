@@ -6,10 +6,10 @@
 <html>
 <body>
 
-<h2>Sentences Info</h2>
+<h2>Create a sentences</h2>
 <br>
 
-<form:form action="/admin/addNewSentence/${topicId}/admin/saveSentence" modelAttribute="sentence">
+<form:form action="/admin/saveSentence/${topicId}" modelAttribute="sentence">
 
     <form:hidden path="id"/>
 
@@ -17,18 +17,18 @@
     <br><br>
     Write a new sentence
     <form:input path="sentence"/>
-    Write a hint
+    Write a hint "to like, to like"
     <form:input path="hint"/>
     <br><br>
 
 
     <form:hidden path="exercise.id" value="${exerciseId}"/>
 
+    <input type="submit" value="OK">
 
     <br><br>
 
-    <input type="submit" value="OK">
-
+   <a href="${pageContext.request.contextPath} /admin/showExercises/${topicId}/${exerciseId}"> Return to sentences</a>
 
 </form:form>
 

@@ -16,5 +16,4 @@ public interface TopicsDAO {
 
     public void deleteTopic(int id);
 
-
 }

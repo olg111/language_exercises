@@ -18,9 +18,7 @@
 
         <tr>
             <td>
-                <li>
-                    <a href="/guest/showExercises/${ex.topic.id}/guest/showSentences/${ex.id}">${ex.name}</a>
-                </li>
+                &bull;    <a href="/guest/showExercises/${ex.topic.id}/${ex.id}">${ex.name}</a>
             </td>
         </tr>
 
@@ -30,11 +28,7 @@
 
 <br>
 
-<!--  это не нужно, можно напрямую использовать строку в href -->
-<c:url var="chooseTopic" value="/guest">
-</c:url>
-<input type="button" value="Return to topics"
-       onclick="window.location.href = '${chooseTopic}'"/>
+       <a href="${pageContext.request.contextPath}/guest">Return to topics</a>
 
 </body>
 

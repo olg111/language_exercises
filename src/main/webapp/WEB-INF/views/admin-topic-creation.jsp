@@ -6,7 +6,7 @@
 <html>
 <body>
 
-<h2>Topics Info</h2>
+<h2>Create a topic</h2>
 <br>
 
 <form:form action="saveTopic" modelAttribute="topic">
@@ -18,6 +18,9 @@
     <br><br>
 
     <input type="submit" value="OK">
+    <br><br>
+
+    <a href="${pageContext.request.contextPath}/admin">Return to topics</a>
 
 
 </form:form>

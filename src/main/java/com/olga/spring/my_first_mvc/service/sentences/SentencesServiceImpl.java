@@ -6,10 +6,10 @@ import com.olga.spring.my_first_mvc.entity.Sentences;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,7 +17,6 @@ import java.util.regex.Pattern;
 @Service
 public class SentencesServiceImpl implements SentencesService {
 
-    //чтобы вызвать метод из DAO прописываем зависимость от него
     @Autowired
     private SentencesDAO sentencesDAO;
 
@@ -46,11 +45,6 @@ public class SentencesServiceImpl implements SentencesService {
 
             myText = sentencesListByExId.get(i).getSentence().split("/");
             myHint = sentencesListByExId.get(i).getHint();
-//      почистить от комментов
-//            for (String s : myText ) {
-//                System.out.println(s);
-//
-//            }
             List<HashMap<String, String>> listHashMap = new ArrayList<>();
             HashMap<String, String> hintHashMap = new HashMap<>();
 
@@ -86,7 +80,6 @@ public class SentencesServiceImpl implements SentencesService {
     @Transactional
     public void saveSentence(Sentences sentences) {
         sentencesDAO.saveSentence(sentences);
-
     }
 
     @Override
@@ -99,6 +92,19 @@ public class SentencesServiceImpl implements SentencesService {
     @Transactional
     public void deleteSentence(int id) {
         sentencesDAO.deleteSentence(id);
-
     }
+
+
+    //  REV00   переместить в сервис сентенс
+    @Override
+    @Transactional
+    public Map<Integer, String> createSentenceMap(){
+        Map<Integer, String> sentenceMap = new HashMap<>();
+        for (Sentences sent: getAllSentences() ) {
+            sentenceMap.put(sent.getId(), sent.getSentence());
+        }
+        return sentenceMap;
+    }
+
+
 }

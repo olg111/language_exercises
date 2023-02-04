@@ -8,10 +8,7 @@ import com.olga.spring.my_first_mvc.service.topics.TopicsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,55 +18,54 @@ public class TopicController {
     @Autowired
     private TopicsService topicsService;
 
-    @RequestMapping("/admin")
+    @GetMapping("/admin")
     public String showAllTopicsToAdmin(Model model){
         List<Topics> allTopics =topicsService.getAllTopics();
         model.addAttribute("allTop", allTopics);
-//        поубирать все SOP
-        System.out.println(allTopics.get(0).getId());
 
-        return "admin-topics";
-//         чтобы view мог отобразить значения полей "темы" нужно в методе контроллера создать model
-//          и добавить темы в качестве атрибутов этой модели
+        return "admin-topic-list";
+        /* so that the view can display the values of the "topics" fields,
+         you need to create a model in the controller method and add topics as attributes of this model*/
     }
-// разделить обработчики для GET/POST/DELETE/PUT (касается всех контроллеров)
-    @RequestMapping("/guest")
+//      REV00   разделить обработчики для GET/POST/DELETE/PUT (касается всех контроллеров) //+ POST, GET
+    @GetMapping("/guest")
     public String showAllTopicsToGuest(Model model){
         List<Topics> allTopics =topicsService.getAllTopics();
         model.addAttribute("allTop", allTopics);
-        System.out.println(allTopics.get(0).getId());
 
-        return "guest-topics";
+        return "guest-topic-list";
     }
 
 
-    @RequestMapping("/admin/addNewTopic")
+    @GetMapping("/admin/addNewTopic")
     public String addNewTopic(Model model){
         Topics topics = new Topics();
         model.addAttribute("topic", topics);
-//        не уверен, что этот метод нужен
+//       REV00  не уверен, что этот метод нужен
 
-        return "admin-topics-info";
+        return "admin-topic-creation";
     }
 
-    @RequestMapping("/admin/saveTopic")
+    @PostMapping("/admin/saveTopic")
     public String saveTopic(@ModelAttribute("topic") Topics topics){
         topicsService.saveTopic(topics);
 
         return "redirect:/admin";
     }
 
-    @RequestMapping("/admin/updateInfoTopic")
+    @GetMapping("/admin/updateInfoTopic")
     public String updateTopic(@RequestParam("topId") int id, Model model){
         Topics topics = topicsService.getTopic(id);
         model.addAttribute("topic", topics);
 
-        return "admin-topics-info";
+        return "admin-topic-creation";
     }
 
-    @RequestMapping("/admin/deleteTopic")
-    public String deleteTopic(@RequestParam("topId") int id){
-        topicsService.deleteTopic(id);
+    // HTML documentation says form selector supports only <form method="get|post">
+
+    @PostMapping("/admin/deleteTopic/{topId}")
+    public String deleteTopic( @PathVariable int topId){
+        topicsService.deleteTopic(topId);
 
         return "redirect:/admin";
     }

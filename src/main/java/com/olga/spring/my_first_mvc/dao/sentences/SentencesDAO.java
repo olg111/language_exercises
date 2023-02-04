@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface SentencesDAO {
 
-    public List<Sentences> getAllSentences(); // ??? ужен ли метод?
+    public List<Sentences> getAllSentences();
 
     public List<Sentences> getSentenceByExId(int exerciseId); //
 
@@ -16,6 +16,5 @@ public interface SentencesDAO {
     public Sentences getSentence(int id);
 
     public void deleteSentence(int id);
-
 
 }

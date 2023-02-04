@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -51,12 +52,21 @@ public class TopicsServiceImpl implements TopicsService {
     @Override
     @Transactional
     public void deleteTopic(int id) {
-
         List<Exercises> exercisesList = exercisesDAO.getExercisesById(id);
         for (Exercises ex:exercisesList) {
             exercisesService.deleteExercise(ex.getId());
         }
         topicsDAO.deleteTopic(id);
+    }
+
+    @Override
+    @Transactional
+    public Map <Integer, String> createMap(){
+        Map<Integer, String> topicMap = new HashMap<>();
+        for (Topics top: getAllTopics() ) {
+            topicMap.put(top.getId(), top.getName());
+        }
+        return topicMap;
     }
 
 }

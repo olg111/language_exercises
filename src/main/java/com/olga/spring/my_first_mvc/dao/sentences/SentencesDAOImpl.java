@@ -11,9 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository  // спациализированный @Component
+@Repository
 public class SentencesDAOImpl implements SentencesDAO {
-
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -30,14 +29,12 @@ public class SentencesDAOImpl implements SentencesDAO {
     @Override
     public List<Sentences> getSentenceByExId(int exerciseId) {
         Session session = sessionFactory.getCurrentSession();
-
         Query<Sentences> query = session.createQuery("from Sentences " +
                 "where exercise.id = '"+exerciseId+"'", Sentences.class);
         List<Sentences> allSentencesById = query.getResultList();
+
         return allSentencesById;
-
     }
-
 
 
     @Override
@@ -50,6 +47,7 @@ public class SentencesDAOImpl implements SentencesDAO {
     public Sentences getSentence(int id) {
         Session session = sessionFactory.getCurrentSession();
         Sentences sentences = session.get(Sentences.class, id);
+
         return  sentences;
     }
 
@@ -59,10 +57,5 @@ public class SentencesDAOImpl implements SentencesDAO {
         Query<Sentences> query = session.createQuery("delete from Sentences where id=:sentenceId");
         query.setParameter("sentenceId", id);
         query.executeUpdate();
-
     }
-    // creating beans from applicationContext. to create session.to work with the database
-
-
-
 }

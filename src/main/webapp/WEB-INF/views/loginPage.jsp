@@ -6,7 +6,7 @@
 
 <html>
 	<body onload='document.loginForm.username.focus();'>
-		<h3>JournalDEV Tutorials</h3>
+		<h3>Login page</h3>
 		<c:if test="${not empty error}">
 		    <div>${error}</div>
 		</c:if>

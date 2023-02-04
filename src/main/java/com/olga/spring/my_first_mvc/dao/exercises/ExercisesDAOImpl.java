@@ -11,34 +11,21 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository  // спациализированный @Component
+@Repository
 public class ExercisesDAOImpl implements ExercisesDAO {
-
 
     @Autowired
     private SessionFactory sessionFactory;
     // creating beans from applicationContext. to create session.to work with the database
-//   Поудалять комментарии
-
-//    @Override
-//
-//    public List<Exercises> getAllExercises() {
-//        Session session = sessionFactory.getCurrentSession();
-//
-//        Query<Exercises> query = session.createQuery("from Exercises", Exercises.class);
-//        List<Exercises> allExercises =  query.getResultList();
-//        return allExercises;
-//    }
 
     @Override
     public List<Exercises> getExercisesById(int topicId) {
         Session session = sessionFactory.getCurrentSession();
         Query<Exercises> query = session.createQuery("from Exercises " +
                 "where topic.id = '"+topicId+"'", Exercises.class);
-
         List<Exercises> allExercisesById =  query.getResultList();
-        return allExercisesById;
 
+        return allExercisesById;
     }
 
     @Override
@@ -51,16 +38,15 @@ public class ExercisesDAOImpl implements ExercisesDAO {
     public Exercises getExercise(int id) {
         Session session = sessionFactory.getCurrentSession();
         Exercises exercises= session.get(Exercises.class, id);
+
         return exercises;
     }
 
     @Override
     public void deleteExercise(int id) {
         Session session= sessionFactory.getCurrentSession();
-//        удаляться ли сентенсы при удалении упражнения ?
         Query<Exercises> query = session.createQuery("delete from Exercises where id=:exerciseId");
         query.setParameter("exerciseId", id);
         query.executeUpdate();
-
     }
 }

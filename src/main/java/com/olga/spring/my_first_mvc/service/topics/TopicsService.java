@@ -14,6 +14,8 @@ public interface TopicsService {
 
     public  void deleteTopic(int id);
 
+    public Map <Integer, String> createMap();
+
 
 
 }

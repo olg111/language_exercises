@@ -6,10 +6,10 @@
 <html>
 <body>
 
-<h2>Topics Info</h2>
+<h2>Create a exercise</h2>
 <br>
 
-<form:form action="saveExercise" modelAttribute="exercise">
+<form:form action="/admin/saveExercise" modelAttribute="exercise">
 
     <form:hidden path="id"/>
     New Exercise name
@@ -30,6 +30,10 @@
     <br><br>
 
     <input type="submit" value="OK">
+
+    <br><br>
+
+    <a href="${pageContext.request.contextPath}/admin/showExercises/${topicId}">Return to exercises</a>
 
 
 </form:form>
