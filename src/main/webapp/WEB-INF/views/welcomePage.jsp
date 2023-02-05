@@ -15,7 +15,7 @@
 	-->
 
 
-		<h4>Welcome Guest</h4>
+		<h3>Welcome Guest</h3>
 		<a href="${pageContext.request.contextPath}/guest">Guest</a>
 	</body>
 </html>

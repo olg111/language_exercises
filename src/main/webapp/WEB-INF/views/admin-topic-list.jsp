@@ -12,7 +12,7 @@
 
 <table>
     <tr>
-        <th>Topics</th>
+        <th> <h3>Topics</h3> </th>
     </tr>
     <c:forEach var="topic" items="${allTop}">
 

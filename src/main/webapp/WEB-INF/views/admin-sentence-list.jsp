@@ -15,7 +15,7 @@
 
 
     <tr>
-        <th>${exName}</th>
+        <th> <h3> ${exName} </h3> </th>
 
     </tr>
 

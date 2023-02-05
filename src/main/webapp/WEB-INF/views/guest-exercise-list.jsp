@@ -11,7 +11,7 @@
 <!--  придумать что показать юзеру если нету упражнений, топиков, предложений -->
 <table>
     <tr>
-        <th>Exercises</th>
+        <th> <h3> <c:out value="${exById[0].topic.name}"/> </h3> </th>
     </tr>
 
     <c:forEach var="ex" items="${exById}">

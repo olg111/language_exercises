@@ -1,31 +1,22 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@page contentType="text/html;charset=UTF-8" language="java" %>
-<%@page isELIgnored="false" %>
-<!DOCTYPE html>
+    <%@page contentType="text/html;charset=UTF-8" language="java" %>
+    <%@page isELIgnored="false" %>
+    <!DOCTYPE html>
 
-<html>
-<body>
+    <html>
+    <body>
 
-<h2>Create a exercise</h2>
-<br>
+    <h2>Create a exercise</h2>
+    <br>
 
-<form:form action="/admin/saveExercise" modelAttribute="exercise">
+    <form:form action="/admin/saveExercise" modelAttribute="exercise">
 
-    <form:hidden path="id"/>
-    New Exercise name
-    <form:input path="name"/>
-    <br><br>
+        <form:hidden path="id"/>
+        New Exercise name
+        <form:input path="name"/>
+        <br><br>
 
-
-    <!--  не уверен, что это работает. Не вижу в моделях этого-->
-    Topic name (id)
-    <form:select path="topic.id">
-
-
-        <form:options items="${topics}"/>
-
-    </form:select>
-
+     <form:hidden path="topic.id" value="${topicId}"/>
 
     <br><br>
 
