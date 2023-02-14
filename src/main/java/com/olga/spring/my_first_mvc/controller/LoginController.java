@@ -1,8 +1,5 @@
 package com.olga.spring.my_first_mvc.controller;
 
-import com.olga.spring.my_first_mvc.entity.Topics;
-import com.olga.spring.my_first_mvc.service.topics.TopicsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

@@ -1,12 +1,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-    <%@page contentType="text/html;charset=UTF-8" language="java" %>
-    <%@page isELIgnored="false" %>
+<%@page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page isELIgnored="false" %>
     <!DOCTYPE html>
 
     <html>
     <body>
 
-    <h2>Create a exercise</h2>
+    <h2>${title}</h2>
     <br>
 
     <form:form action="/admin/saveExercise" modelAttribute="exercise">
@@ -26,8 +26,6 @@
 
     <a href="${pageContext.request.contextPath}/admin/showExercises/${topicId}">Return to exercises</a>
 
-
 </form:form>
-
 
 </body>

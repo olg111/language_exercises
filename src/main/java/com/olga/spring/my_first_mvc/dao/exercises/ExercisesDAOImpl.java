@@ -2,7 +2,6 @@ package com.olga.spring.my_first_mvc.dao.exercises;
 
 
 import com.olga.spring.my_first_mvc.entity.Exercises;
-import com.olga.spring.my_first_mvc.entity.Topics;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;

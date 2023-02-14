@@ -1,8 +1,7 @@
 package com.olga.spring.my_first_mvc.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Entity
 @Table (name = "sentences")
@@ -19,11 +18,11 @@ public class Sentences {
     @Column(name = "hint")
     private String hint;
 
-    //
+
     @ManyToOne(cascade ={CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.REMOVE })
     @JoinColumn(name = "exercise_id")
     private Exercises exercise;
-    //
+
 
     public Sentences() {
     }
@@ -65,8 +64,6 @@ public class Sentences {
     public void setExercise(Exercises exercise) {
         this.exercise = exercise;
     }
-
-
 
 
     @Override

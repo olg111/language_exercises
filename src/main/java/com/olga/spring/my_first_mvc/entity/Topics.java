@@ -2,7 +2,6 @@ package com.olga.spring.my_first_mvc.entity;
 
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity

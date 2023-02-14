@@ -10,28 +10,23 @@
 <h2>Sentence list</h2>
 <br>
 
-
 <table>
-
 
     <tr>
         <th> <h3> ${exName} </h3> </th>
 
     </tr>
 
-
     <c:forEach var="sentById" items="${sentById}">
 
-
-        <c:url var="updateButton" value="/admin/updateInfoSentences/${topicId}">
+        <c:url var="updateButton" value="/admin/updateInfoSentences/${topicId}/${exerciseId}">
             <c:param name="sentId" value="${sentById.id}"/>
         </c:url>
 
        <tr>
             <td>
-                &bull;    <a href="">${sentById.sentence}</a>
+                &bull;    ${sentById.sentence}</a>
             </td>
-
 
             <td>
                 <input type="button" value="Update"
@@ -46,7 +41,6 @@
 
         </tr>
 
-
     </c:forEach>
 
 </table>
@@ -57,7 +51,6 @@
 <input type="button" value="Add"
        onclick="window.location.href = '${addNewSentence}'"/>
 
-
 <br><br>
 
        <a href="${pageContext.request.contextPath}/admin/showExercises/${topicId}">Return to exercises</a>
@@ -65,7 +58,6 @@
 <br><br>
 
        <a href="${pageContext.request.contextPath}/admin">Return to topics</a>
-
 
 </body>
 

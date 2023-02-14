@@ -1,7 +1,6 @@
 package com.olga.spring.my_first_mvc.service.sentences;
 
 import com.olga.spring.my_first_mvc.entity.Sentences;
-import com.olga.spring.my_first_mvc.entity.Topics;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +20,5 @@ public interface SentencesService {
     public void deleteSentence(int id);
 
     public Map<Integer, String> createSentenceMap();
-
-
 
 }

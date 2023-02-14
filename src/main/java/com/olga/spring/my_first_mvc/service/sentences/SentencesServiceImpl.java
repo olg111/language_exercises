@@ -70,8 +70,6 @@ public class SentencesServiceImpl implements SentencesService {
             listHashMap.add(hintHashMap);
             allListsHashMap.add(listHashMap);
         }
-//        поудаялть SOP
-        System.out.println(allListsHashMap);
         return  allListsHashMap;
     }
 
@@ -94,8 +92,6 @@ public class SentencesServiceImpl implements SentencesService {
         sentencesDAO.deleteSentence(id);
     }
 
-
-    //  REV00   переместить в сервис сентенс
     @Override
     @Transactional
     public Map<Integer, String> createSentenceMap(){

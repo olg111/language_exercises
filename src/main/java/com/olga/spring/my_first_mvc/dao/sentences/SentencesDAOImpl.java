@@ -1,7 +1,6 @@
 package com.olga.spring.my_first_mvc.dao.sentences;
 
 
-import com.olga.spring.my_first_mvc.entity.Exercises;
 import com.olga.spring.my_first_mvc.entity.Sentences;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

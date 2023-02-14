@@ -7,6 +7,7 @@
     <body>
 
         <h2>Exercise list</h2>
+<!--          сообщение когда нету записей (сделать для топиков и сентенсов тоже) -->
         <br>
 
         <table>
@@ -16,14 +17,13 @@
 
             <c:forEach var="ex" items="${exById}">
 
-                <c:url var="updateButton" value="/admin/updateInfoExercise">
+                <c:url var="updateButton" value="/admin/updateInfoExercise/${topicId}">
                     <c:param name="exId" value="${ex.id}"/>
                 </c:url>
 
                 <tr>
                     <td>
                         &bull;   <a href="/admin/showExercises/${ex.topic.id}/${ex.id}">${ex.name}</a>
-
 
                     <td>
                         <input type="button" value="Update"
@@ -38,7 +38,6 @@
 
                 </tr>
 
-
             </c:forEach>
 
         </table>
@@ -51,9 +50,7 @@
         <br>
         <br>
 
-
         <a href="${pageContext.request.contextPath}/admin">Return to topics</a>
-
 
     </body>
 

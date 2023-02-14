@@ -1,9 +1,7 @@
 package com.olga.spring.my_first_mvc.controller;
 
 
-import com.olga.spring.my_first_mvc.entity.Exercises;
 import com.olga.spring.my_first_mvc.entity.Topics;
-import com.olga.spring.my_first_mvc.service.exercises.ExercisesService;
 import com.olga.spring.my_first_mvc.service.topics.TopicsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +25,7 @@ public class TopicController {
         /* so that the view can display the values of the "topics" fields,
          you need to create a model in the controller method and add topics as attributes of this model*/
     }
-//      REV00   разделить обработчики для GET/POST/DELETE/PUT (касается всех контроллеров) //+ POST, GET
+
     @GetMapping("/guest")
     public String showAllTopicsToGuest(Model model){
         List<Topics> allTopics =topicsService.getAllTopics();
@@ -41,7 +39,7 @@ public class TopicController {
     public String addNewTopic(Model model){
         Topics topics = new Topics();
         model.addAttribute("topic", topics);
-//       REV00  не уверен, что этот метод нужен
+        model.addAttribute("title", "Create a topic");
 
         return "admin-topic-creation";
     }
@@ -57,6 +55,7 @@ public class TopicController {
     public String updateTopic(@RequestParam("topId") int id, Model model){
         Topics topics = topicsService.getTopic(id);
         model.addAttribute("topic", topics);
+        model.addAttribute("title", "Edit the topic");
 
         return "admin-topic-creation";
     }

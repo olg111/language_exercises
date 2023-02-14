@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 public class ExercisesServiceImpl implements ExercisesService {
 
-    //чтобы вызвать метод из DAO прописываем зависимость от него
+
     @Autowired
     private ExercisesDAO exercisesDAO;
 
@@ -25,13 +25,6 @@ public class ExercisesServiceImpl implements ExercisesService {
 
     @Autowired
     private SentencesService sentencesService;
-
-
-//    @Override
-//    @Transactional
-//    public List<Exercises> getAllExercises() {
-//        return exercisesDAO.getAllExercises();
-//    }
 
     @Override
     @Transactional

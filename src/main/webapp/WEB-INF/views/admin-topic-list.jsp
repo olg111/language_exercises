@@ -16,7 +16,6 @@
     </tr>
     <c:forEach var="topic" items="${allTop}">
 
-
         <c:url var="updateButton" value="/admin/updateInfoTopic">
             <c:param name="topId" value="${topic.id}"/>
         </c:url>
@@ -50,9 +49,7 @@
 <input type="button" value="Add"
        onclick="window.location.href = '${addNewTopic}'"/>
 
-
 <br><br>
-
 
 <c:url value="/logout" var="logoutUrl"/>
 <form id="logout" action="${logoutUrl}" method="post">
@@ -61,7 +58,6 @@
 <c:if test="${pageContext.request.userPrincipal.name != null}">
     <a href="javascript:document.getElementById('logout').submit()">Logout</a>
 </c:if>
-
 
 </body>
 

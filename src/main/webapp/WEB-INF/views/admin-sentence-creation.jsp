@@ -6,7 +6,7 @@
 <html>
 <body>
 
-<h2>Create a sentences</h2>
+<h2>${title}</h2>
 <br>
 
 <form:form action="/admin/saveSentence/${topicId}" modelAttribute="sentence">
@@ -21,7 +21,6 @@
     <form:input path="hint"/>
     <br><br>
 
-
     <form:hidden path="exercise.id" value="${exerciseId}"/>
 
     <input type="submit" value="OK">
@@ -31,6 +30,5 @@
    <a href="${pageContext.request.contextPath} /admin/showExercises/${topicId}/${exerciseId}"> Return to sentences</a>
 
 </form:form>
-
 
 </body>

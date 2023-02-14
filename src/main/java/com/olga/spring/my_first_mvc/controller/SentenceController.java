@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,11 +54,11 @@ public class SentenceController {
     public String addNewSentence(@PathVariable int topicId, @PathVariable int exerciseId,  Model model){
         Sentences sentence = new Sentences();
         Map<Integer, String> sentenceMap = sentencesService.createSentenceMap();
-//      REV00  не все аттрибуты используются в jsp
         model.addAttribute("sentence", sentence);
-        model.addAttribute("sentenceMap", sentenceMap);
-        model.addAttribute("topicId", topicId);
-        model.addAttribute("exerciseId", exerciseId);
+        //model.addAttribute("sentenceMap", sentenceMap); //не нужен
+        //model.addAttribute("topicId", topicId);
+        //model.addAttribute("exerciseId", exerciseId);
+        model.addAttribute("title", "Create a sentence");
 
         return "admin-sentence-creation";
     }
@@ -72,12 +71,12 @@ public class SentenceController {
         return "redirect:/admin/showExercises/"+ topicId + "/" + sentences.getExercise().getId();
     }
 
-    @GetMapping("/admin/updateInfoSentences/{topicId}")
-    public String updateSentence(@PathVariable int topicId, @RequestParam("sentId") int id, Model model){
+    @GetMapping("/admin/updateInfoSentences/{topicId}/{exerciseId}")
+    public String updateSentence(@PathVariable int topicId, @PathVariable int exerciseId, @RequestParam("sentId") int id, Model model){
         Sentences sentences = sentencesService.getSentence(id);
-        //   REV00     не все аттрибуты используются в jsp
+
         model.addAttribute("sentence", sentences);
-        model.addAttribute("topicId", topicId);
+        model.addAttribute("title", "Edit the sentence");
 
         return "admin-sentence-creation";
     }
