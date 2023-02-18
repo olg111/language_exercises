@@ -10,7 +10,7 @@ to access `/admin/**`.
 
 You can find username and password in class **WebSecurityConfigAdapter**.
 
-![img.png](webSecurityConfigAdapter.png)
+![img.png](assets/webSecurityConfigAdapter.png)
 
 The user has access to perform and check exercises
 without registration and SMS =).
@@ -29,7 +29,7 @@ Before starting the program, you need MySQL configured and database created.
 2. According to the screenshot, change the following data
 in the class HibernateConfig.java: 
 
-![img_1.png](hibernateConfig.png)
+![img_1.png](assets/hibernateConfig.png)
 
     (1) - your MySQL port;
     
@@ -41,13 +41,13 @@ in the class HibernateConfig.java:
 for this you need to connect **Smart Tomcat**.
 
 
-![img.png](Smartcat 1.png)
+![img.png](assets/Smartcat 1.png)
 
-![img.png](Smartcat 2.png)
+![img.png](assets/Smartcat 2.png)
 
-![img.png](Smartcat 3.png)
+![img.png](assets/Smartcat 3.png)
 
-![img.png](Smartcat 4.png)
+![img.png](assets/Smartcat 4.png)
 
 ##How to use the project
 
@@ -55,9 +55,9 @@ for this you need to connect **Smart Tomcat**.
 
 After the project is launched and opened in the browser add `/admin` path in the address bar.
 
-![img.png](browser 2.png)
+![img.png](assets/browser 2.png)
 
-![img.png](login page.png)
+![img.png](assets/login page.png)
 
 You will be redirected to the authorization page.
 Please type the required login and password specified in a class **WebSecurityConfigAdapter**.
@@ -66,7 +66,7 @@ On "Topic list" page you can add new topic (Add button),
 change topic name (Update button), delete topic (Delete button),
 log out of your account (Logout link).
 
-![img.png](topic list.png)
+![img.png](assets/topic list.png)
 
 
 ---
@@ -76,7 +76,7 @@ To go to the page with exercises, you need to click on the topic
 After clicking, a page "Exercise list" will appear. It that is identical
 in structure to the page described above.
 
-![img.png](exercise list.png)
+![img.png](assets/exercise list.png)
 
 ---
 To go to the page with sentences, you need to click on the exercise
@@ -84,7 +84,7 @@ To go to the page with sentences, you need to click on the exercise
 After clicking, a page "Sentence list" will appear. It that is identical
 in structure to the page described above.
 
-![img.png](sentence list.png)
+![img.png](assets/sentence list.png)
 
 ---
 To create a sentence, you need to use the pattern.
@@ -92,7 +92,7 @@ The word that the user will have to write
 must be enclosed in special characters /{word}/.
 In the second field you need to enter a hint.
 
-![img.png](create a sentence.png)
+![img.png](assets/create a sentence.png)
 
 ---
 
@@ -101,17 +101,17 @@ In the second field you need to enter a hint.
 Click on the link "Guest" and go to the page with a choice of topics,
 then select one of them and start doing the exercises.
 
-![img.png](guest.png)
+![img.png](assets/guest.png)
 
-![img.png](guest topics.png)
+![img.png](assets/guest topics.png)
 
-![img.png](guest exercise.png)
+![img.png](assets/guest exercise.png)
 
 Fill in the empty field with your answer, click the "check" button.
 If the entered answer is correct, then you will see the blue inscription "ok!",
 otherwise the correct solution will be shown in red.
 
-![img.png](sentences.png)
+![img.png](assets/sentences.png)
 
 
 
