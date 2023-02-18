@@ -1,5 +1,5 @@
 
-##About the project
+## About the project
 
 This project is a prototype site for learning English grammar.
 The functionality of the site is divided into administrator `/admin/**`
@@ -15,14 +15,14 @@ You can find username and password in class **WebSecurityConfigAdapter**.
 The user has access to perform and check exercises
 without registration and SMS =).
 
-##Technologies
+## Technologies
 The site was created in Java using
 **Spring MVC + Hibernate MySQL + Spring Security**.
 Configuration method - JavaConfig.
 
 All program settings (configuration) are located in the package "configuration".
 
-##How to run the project
+## How to run the project
 1. Database dump is named `my_db_fp_english_exercises` and it
 is placed at the root of a project.
 Before starting the program, you need MySQL configured and database created.
@@ -41,23 +41,23 @@ in the class HibernateConfig.java:
 for this you need to connect **Smart Tomcat**.
 
 
-![img.png](assets/Smartcat 1.png)
+![img.png](assets/Smartcat.png)
 
-![img.png](assets/Smartcat 2.png)
+![img.png](assets/Smartcat_2.png)
 
-![img.png](assets/Smartcat 3.png)
+![img.png](assets/Smartcat_3.png)
 
-![img.png](assets/Smartcat 4.png)
+![img.png](assets/Smartcat_4.png)
 
-##How to use the project
+## How to use the project
 
 ### For administrator:
 
 After the project is launched and opened in the browser add `/admin` path in the address bar.
 
-![img.png](assets/browser 2.png)
+![img.png](assets/browser2.png)
 
-![img.png](assets/login page.png)
+![img.png](assets/login_page.png)
 
 You will be redirected to the authorization page.
 Please type the required login and password specified in a class **WebSecurityConfigAdapter**.
@@ -66,7 +66,7 @@ On "Topic list" page you can add new topic (Add button),
 change topic name (Update button), delete topic (Delete button),
 log out of your account (Logout link).
 
-![img.png](assets/topic list.png)
+![img.png](assets/topic_list.png)
 
 
 ---
@@ -76,7 +76,7 @@ To go to the page with exercises, you need to click on the topic
 After clicking, a page "Exercise list" will appear. It that is identical
 in structure to the page described above.
 
-![img.png](assets/exercise list.png)
+![img.png](assets/exercise_list.png)
 
 ---
 To go to the page with sentences, you need to click on the exercise
@@ -84,7 +84,7 @@ To go to the page with sentences, you need to click on the exercise
 After clicking, a page "Sentence list" will appear. It that is identical
 in structure to the page described above.
 
-![img.png](assets/sentence list.png)
+![img.png](assets/sentence_list.png)
 
 ---
 To create a sentence, you need to use the pattern.
@@ -92,7 +92,7 @@ The word that the user will have to write
 must be enclosed in special characters /{word}/.
 In the second field you need to enter a hint.
 
-![img.png](assets/create a sentence.png)
+![img.png](assets/create_a_sentence.png)
 
 ---
 
@@ -103,9 +103,9 @@ then select one of them and start doing the exercises.
 
 ![img.png](assets/guest.png)
 
-![img.png](assets/guest topics.png)
+![img.png](assets/guest_topics.png)
 
-![img.png](assets/guest exercise.png)
+![img.png](assets/guest_exercise.png)
 
 Fill in the empty field with your answer, click the "check" button.
 If the entered answer is correct, then you will see the blue inscription "ok!",
