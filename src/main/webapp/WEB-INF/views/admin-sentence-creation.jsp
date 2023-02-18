@@ -6,29 +6,41 @@
 <html>
 <body>
 
-<h2>${title}</h2>
-<br>
+	<style>
 
-<form:form action="/admin/saveSentence/${topicId}" modelAttribute="sentence">
+    			.pattern {
+    			  color: red;
+    			  font-weight:bold;
+    			}
+    </style>
 
-    <form:hidden path="id"/>
+	<h2>${title}</h2>
+	<br>
 
-    Use pattern "I /{like}/ cats and he /{likes}/ dogs."
-    <br><br>
-    Write a new sentence
-    <form:input path="sentence"/>
-    Write a hint "to like, to like"
-    <form:input path="hint"/>
-    <br><br>
+	<form:form action="/admin/saveSentence/${topicId}" modelAttribute="sentence">
 
-    <form:hidden path="exercise.id" value="${exerciseId}"/>
+	    <form:hidden path="id"/>
 
-    <input type="submit" value="OK">
 
-    <br><br>
+	    Use pattern <span class="pattern"> "I /{like}/ cats and he /{likes}/ dogs."</span>
 
-   <a href="${pageContext.request.contextPath} /admin/showExercises/${topicId}/${exerciseId}"> Return to sentences</a>
 
-</form:form>
+	    <br><br>
+	    Write a new sentence
+	    <form:input path="sentence"/>
+	    Write a hint <span class="pattern"> "to like, to like"</span>
+	    <form:input path="hint"/>
+	    <br><br>
+
+	    <form:hidden path="exercise.id" value="${exerciseId}"/>
+
+	    <input type="submit" value="OK">
+
+	    <br><br>
+
+	   <a href="${pageContext.request.contextPath} /admin/showExercises/${topicId}/${exerciseId}"> Return to sentences</a>
+
+	</form:form>
 
 </body>
+</html>

@@ -22,6 +22,8 @@ public class WebSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
                 .authorities("ROLE_ADMIN");
     }
 
+
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
