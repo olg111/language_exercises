@@ -51,8 +51,7 @@
 
 <br><br>
 
-<c:url value="/logout" var="logoutUrl"/>
-<form id="logout" action="${logoutUrl}" method="post">
+<form id="logout" action="/logout" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
 <c:if test="${pageContext.request.userPrincipal.name != null}">

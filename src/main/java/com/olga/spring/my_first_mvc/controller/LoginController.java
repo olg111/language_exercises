@@ -1,6 +1,7 @@
 package com.olga.spring.my_first_mvc.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +14,7 @@ public class LoginController {
 
     @RequestMapping(value = { "/"}, method = RequestMethod.GET)
     public ModelAndView welcomePage() {
+     //   return "redirect:/guest";
         ModelAndView model = new ModelAndView();
         model.setViewName("welcomePage");
         return model;

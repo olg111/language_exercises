@@ -1,0 +1,102 @@
+
+html, body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+
+body {
+	display: flex;
+    flex-direction: column;
+    background-color: rgb(240, 240, 240, 0.5);
+    text-align: center;
+    font-family: Verdana;
+    font-size: 20px;
+    color: black;
+}
+
+header {
+	display: flex;
+	height: 100px;
+	background-color: rgb(100, 100, 100);
+	text-align: center;
+	font-size: 50px;
+	color: black;
+}
+
+main {
+	flex: auto;
+	background-color: pink;
+}
+
+.topnav {
+	width:82%;
+	display:flex;
+	background-color: rgb(100, 100, 100);
+	border-radius: 0px;
+	justify-content: space-between;
+}
+
+.topnav a {
+  /*float: left;*/
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+.topnav a:hover {
+	background-color: rgb(140, 140, 140);
+	color: Black;
+	border-radius: 0px;
+}
+
+.topnav-centered  {
+	flex: 1;
+    text-align: center;
+}
+
+.topnav-right {
+    margin-right: auto;
+}
+
+
+@media screen and (max-width: 500px) {
+    .topnav, .topnav-centered, .topnav-right {
+    flex: 1;
+    flex-direction: column;
+    align-self: center;
+    margin: 5px;
+  }
+
+header, body, footer{
+	flex: 1;
+    flex-direction: column;
+    align-self: center;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+}
+}
+
+footer {
+	  height: 60px;
+	  position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: rgb(180, 180, 180);
+
+}
+
+.footerp{
+	  text-align: left;
+	  font-family: Verdana;
+	  font-size: 15px;
+	  text-indent: 50px;
+
+}
+
+
