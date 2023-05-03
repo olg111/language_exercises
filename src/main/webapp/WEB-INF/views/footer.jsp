@@ -4,35 +4,19 @@
 
 <!DOCTYPE html>
 <html>
-
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style><%@include file="/styles/style-main.css"%></style>
+
 </head>
 <body>
-
-<!-- HEADER include -->
-<jsp:include page="header.jsp" />
-
-<main>
-	<aside>
-	</aside>
-
-	<section>
-			<p> If you are a beginner and want to learn how to use tenses correctly,
-        	    our exercises and basic grammar course will help you achieve your goal.
-        	</p>
-	</section>
-</main>
-
-<!-- FOOTER include -->
-<jsp:include page="footer.jsp" />
-
-
-
+	<footer>
+	    <p class="footerp"> Contact:
+	        <span style="color: #483D8B">
+	            <a href="https://www.linkedin.com/in/olga-marinets-2a990b167/">Olga M. Linkedin</a>
+	        </span>
+	    </p>
+	</footer>
 </body>
 </html>
-
-

@@ -5,41 +5,44 @@
 <!DOCTYPE html>
 
 <html>
-<body>
 
-<h2>Dear Guest, Choose an exercise</h2>
-<br>
-<table>
+	<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style><%@include file="/styles/style-main.css"%></style>
+    </head>
+
+	<body>
+		<!-- HEADER include -->
+	    <jsp:include page="header.jsp" />
+
+	    <main>
+        	<aside>
+        	    <h3> <c:out value="${exById[0].topic.name}"/> </h3>
+
+        	    <nav class="sidenav">
+	                <c:if test="${fn:length(exById) < 1 }">
+	                    <h3> No exercises, try again later :( </h3>
+	                </c:if>
+
+	                <c:if test="${fn:length(exById) > 0 }">
+		                <c:forEach var="ex" items="${exById}">
+		                    <a href="/guest/showExercises/${ex.topic.id}/${ex.id}">${ex.name}</a>
+		                </c:forEach>
+	                </c:if>
+	                <br>
+	                <a style="color: #B22222" href="${pageContext.request.contextPath}/guest">Return to topics</a>
+
+	            </nav>
+        	</aside>
+
+        	<section>
+        	    <p>Dear Guest, Choose an exercise</p>
+        	</section>
 
 
-	<c:if test="${fn:length(exById) < 1 }">
-        <h3> No exercises, try again later :( </h3>
-    </c:if>
 
-    <c:if test="${fn:length(exById) > 0 }">
-
-
-		    <tr>
-		        <th> <h3> <c:out value="${exById[0].topic.name}"/> </h3> </th>
-		    </tr>
-
-		    <c:forEach var="ex" items="${exById}">
-
-		        <tr>
-		            <td>
-		                &bull;    <a href="/guest/showExercises/${ex.topic.id}/${ex.id}">${ex.name}</a>
-		            </td>
-		        </tr>
-
-		    </c:forEach>
-	</c:if>
-
-</table>
-
-<br>
-
-       <a href="${pageContext.request.contextPath}/guest">Return to topics</a>
-
-</body>
-
+		<!-- FOOTER include -->
+        <jsp:include page="footer.jsp" />
+	</body>
 </html>

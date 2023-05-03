@@ -5,7 +5,18 @@
 <!DOCTYPE html>
 
 <html>
+
+	<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style><%@include file="/styles/style-main.css"%></style>
+    </head>
+
 	<body>
+
+		<!-- HEADER include -->
+        <jsp:include page="header.jsp" />
+
 		<style>
 			.sentence-item {
 			    display: flex;
@@ -23,63 +34,75 @@
 			}
 		</style>
 
-		<h2>Dear Guest, Fill in the sentences</h2>
+		<main>
+			<aside>
+				<nav class="sidenav">
+					<a href="${pageContext.request.contextPath}/guest/showExercises/${topicId}">Return to exercises</a>
+                    <br>
+                    <a href="${pageContext.request.contextPath}/guest">Return to topics</a>
+				</nav>
+
+			</aside>
+
+			<section>
+				<p>Dear Guest, Fill in the sentences</p>
+				<br>
+						<table>
+
+
+                		    <c:if test="${fn:length(allListsHashMap) < 1 }">
+                            	<h3> No sentences, try again later :( </h3>
+                            </c:if>
+
+
+                			<c:if test="${fn:length(allListsHashMap) > 0}">
+
+                				<tr>
+                                    <th>${exName}</th>
+                                </tr>
+
+
+                			    <c:forEach var="sentenceListHashMap" items="${allListsHashMap}" varStatus="status">
+                			        <tr>
+
+                			            <td class="sentence-item">
+                			                &bull;
+                			                <c:forEach var="hashMap" items="${sentenceListHashMap}">
+                			                    <c:choose>
+                			                        <c:when test="${hashMap.type.equals('text')}">
+                			                            ${hashMap.content}
+                			                        </c:when>
+                			                        <c:when test="${hashMap.type.equals('input')}">
+                			                            <div>
+                			                                <input class="answer-${status.getIndex()}" type="text"
+                			                                       data-rightAnswer="${hashMap.content}"/>
+                			                                <div class="marker-${status.getIndex()}"></div>
+                			                            </div>
+
+                			                        </c:when>
+                			                        <c:when test="${hashMap.type.equals('hint')}">
+                			                            (${hashMap.content})
+                			                        </c:when>
+                			                    </c:choose>
+                			                </c:forEach>
+                			                <div>
+                			                    <input type="button" value="check" onclick="checkAnswer(${status.getIndex()})">
+                			                </div>
+                			            </td>
+                			        </tr>
+
+                			    </c:forEach>
+                			</c:if>
+
+                		</table>
+			</section>
 
 		<br>
 
-		<table>
 
-
-		    <c:if test="${fn:length(allListsHashMap) < 1 }">
-            	<h3> No sentences, try again later :( </h3>
-            </c:if>
-
-
-			<c:if test="${fn:length(allListsHashMap) > 0}">
-
-				<tr>
-                    <th>${exName}</th>
-                </tr>
-
-
-			    <c:forEach var="sentenceListHashMap" items="${allListsHashMap}" varStatus="status">
-			        <tr>
-
-			            <td class="sentence-item">
-			                &bull;
-			                <c:forEach var="hashMap" items="${sentenceListHashMap}">
-			                    <c:choose>
-			                        <c:when test="${hashMap.type.equals('text')}">
-			                            ${hashMap.content}
-			                        </c:when>
-			                        <c:when test="${hashMap.type.equals('input')}">
-			                            <div>
-			                                <input class="answer-${status.getIndex()}" type="text"
-			                                       data-rightAnswer="${hashMap.content}"/>
-			                                <div class="marker-${status.getIndex()}"></div>
-			                            </div>
-
-			                        </c:when>
-			                        <c:when test="${hashMap.type.equals('hint')}">
-			                            (${hashMap.content})
-			                        </c:when>
-			                    </c:choose>
-			                </c:forEach>
-			                <div>
-			                    <input type="button" value="check" onclick="checkAnswer(${status.getIndex()})">
-			                </div>
-			            </td>
-			        </tr>
-
-			    </c:forEach>
-			</c:if>
-
-		</table>
 
 		<br>
-		<a href="${pageContext.request.contextPath}/guest/showExercises/${topicId}">Return to exercises</a>
-		<br><br>
-		<a href="${pageContext.request.contextPath}/guest">Return to topics</a>
+
 
 		<script>
 		    function checkAnswer(index) {
@@ -105,5 +128,8 @@
 		        }
 		    }
 		</script>
+
+		<!-- FOOTER include -->
+        <jsp:include page="footer.jsp" />
 	</body>
 </html>
