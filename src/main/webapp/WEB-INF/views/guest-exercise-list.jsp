@@ -31,7 +31,7 @@
 		                </c:forEach>
 	                </c:if>
 	                <br>
-	                <a style="color: #B22222" href="${pageContext.request.contextPath}/guest">Return to topics</a>
+	                <a class="return" href="${pageContext.request.contextPath}/guest">Return to topics</a>
 
 	            </nav>
         	</aside>

@@ -18,83 +18,60 @@
         <jsp:include page="header.jsp" />
 
 		<style>
-			.sentence-item {
-			    display: flex;
-			    gap: 12px
-			}
 
-			.correctAnswer {
-			  color: blue;
-			  font-weight:bold;
-			}
 
-			.incorrectAnswer {
-			  color: red;
-			  font-weight:bold;
-			}
+
 		</style>
 
 		<main>
 			<aside>
 				<nav class="sidenav">
-					<a href="${pageContext.request.contextPath}/guest/showExercises/${topicId}">Return to exercises</a>
-                    <br>
-                    <a href="${pageContext.request.contextPath}/guest">Return to topics</a>
+					<a class="return"  href="${pageContext.request.contextPath}/guest/showExercises/${topicId}">Return to exercises</a>
+                    <a class="return"  href="${pageContext.request.contextPath}/guest">Return to topics</a>
 				</nav>
 
 			</aside>
 
 			<section>
-				<p>Dear Guest, Fill in the sentences</p>
-				<br>
-						<table>
-
 
                 		    <c:if test="${fn:length(allListsHashMap) < 1 }">
                             	<h3> No sentences, try again later :( </h3>
                             </c:if>
 
+                            <p><h4>${exName}</h4></p>
 
+						<ol>
                 			<c:if test="${fn:length(allListsHashMap) > 0}">
-
-                				<tr>
-                                    <th>${exName}</th>
-                                </tr>
-
-
                 			    <c:forEach var="sentenceListHashMap" items="${allListsHashMap}" varStatus="status">
-                			        <tr>
+                			            <li>
+	                                        <div class="sentence-item">
+	                                            <c:forEach var="hashMap" items="${sentenceListHashMap}">
+	                                                <c:choose>
+	                                                    <c:when test="${hashMap.type.equals('text')}">
+	                                                        ${hashMap.content}
+	                                                    </c:when>
+	                                                    <c:when test="${hashMap.type.equals('input')}">
+	                                                        <div>
+	                                                            <input class="answer-${status.getIndex()}" type="text"
+	                                                                   data-rightAnswer="${hashMap.content}"/>
+	                                                            <div class="marker-${status.getIndex()}"></div>
+	                                                        </div>
 
-                			            <td class="sentence-item">
-                			                &bull;
-                			                <c:forEach var="hashMap" items="${sentenceListHashMap}">
-                			                    <c:choose>
-                			                        <c:when test="${hashMap.type.equals('text')}">
-                			                            ${hashMap.content}
-                			                        </c:when>
-                			                        <c:when test="${hashMap.type.equals('input')}">
-                			                            <div>
-                			                                <input class="answer-${status.getIndex()}" type="text"
-                			                                       data-rightAnswer="${hashMap.content}"/>
-                			                                <div class="marker-${status.getIndex()}"></div>
-                			                            </div>
-
-                			                        </c:when>
-                			                        <c:when test="${hashMap.type.equals('hint')}">
-                			                            (${hashMap.content})
-                			                        </c:when>
-                			                    </c:choose>
-                			                </c:forEach>
-                			                <div>
-                			                    <input type="button" value="check" onclick="checkAnswer(${status.getIndex()})">
-                			                </div>
-                			            </td>
-                			        </tr>
+	                                                    </c:when>
+	                                                    <c:when test="${hashMap.type.equals('hint')}">
+	                                                        (${hashMap.content})
+	                                                    </c:when>
+	                                                </c:choose>
+	                                            </c:forEach>
+	                                            <div>
+	                                                <input type="button" class="button" value="check" onclick="checkAnswer(${status.getIndex()})">
+	                                            </div>
+	                                        </div>
+                			            </li>
 
                 			    </c:forEach>
                 			</c:if>
-
-                		</table>
+                		</ol>
 			</section>
 
 		<br>
