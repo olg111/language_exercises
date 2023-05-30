@@ -36,6 +36,7 @@ public class TopicsServiceImpl implements TopicsService {
 
     @Override
     @Transactional
+
     public void saveTopic(Topics topics) {
         topicsDAO.saveTopic(topics);
 

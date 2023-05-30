@@ -5,59 +5,70 @@
 <!DOCTYPE html>
 
 <html>
-<body>
 
-<h2>Topic list</h2>
-<br>
+	<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style><%@include file="/styles/style-main.css"%></style>
+    </head>
 
-<table>
-    <tr>
-        <th> <h3>Topics</h3> </th>
-    </tr>
-    <c:forEach var="topic" items="${allTop}">
+	<body>
+		<!-- HEADER include -->
+    	<jsp:include page="header.jsp" />
 
-        <c:url var="updateButton" value="/admin/updateInfoTopic">
-            <c:param name="topId" value="${topic.id}"/>
-        </c:url>
+    	<main>
 
-        <tr>
-            <td>
-                &bull;    <a href="/admin/showExercises/${topic.id}">${topic.name}</a>
-            </td>
+	        <aside>
+	            <h3>Topic list</h3>
+	            <nav class="sidenav">
 
-            <td>
-                <input type="button" value="Update"
-                       onclick="window.location.href = '${updateButton}'"/>
-            </td>
+	                <c:forEach var="topic" items="${allTop}">
 
-            <td>
-                <form:form action="/admin/deleteTopic/${topic.id}"  method="post">
-                    <input type="submit" value="Delete"/>
-	            </form:form>
-            </td>
+	                    <c:url var="updateButton" value="/admin/updateInfoTopic">
+	                        <c:param name="topId" value="${topic.id}"/>
+	                    </c:url>
 
-        </tr>
+	                    <a href="/admin/showExercises/${topic.id}">${topic.name}</a>
 
-    </c:forEach>
+	                </c:forEach>
+				</nav>
+	        </aside>
 
-</table>
+	        <section>
+	            <p> <h3> Dear Admin, here you can create a new topic </h3> </p>
+	            <c:forEach var="topic" items="${allTop}">
 
-<br>
-<c:url var="addNewTopic" value="/admin/addNewTopic"></c:url>
+	                <c:url var="updateButton" value="/admin/updateInfoTopic">
+	                    <c:param name="topId" value="${topic.id}"/>
+	                </c:url>
 
 
-<input type="button" value="Add"
-       onclick="window.location.href = '${addNewTopic}'"/>
+				<div class="flex-container">
+	                <p>${topic.name}</p>
 
-<br><br>
+	                <div class="action-container">
 
-<form id="logout" action="/logout" method="post">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-</form>
-<c:if test="${pageContext.request.userPrincipal.name != null}">
-    <a href="javascript:document.getElementById('logout').submit()">Logout</a>
-</c:if>
+	                    <input class="input-admin update-button" type="button" value="Update"
+	                        onclick="window.location.href = '${updateButton}'"/>
 
-</body>
+	                    <form:form action="/admin/deleteTopic/${topic.id}"  method="post">
+	                     <input class="input-admin delete-button" type="submit" value="Delete"/>
+	                    </form:form>
+	                </div>
+				</div>
+	            </c:forEach>
+
+	            <br>
+
+	            <c:url var="addNewTopic" value="/admin/addNewTopic"></c:url>
+	            <input class="input-admin add-ok-button" type="button" value="Add"
+	                   onclick="window.location.href = '${addNewTopic}'"/>
+
+	        </section>
+    	</main>
+
+		<!-- FOOTER include -->
+        <jsp:include page="footer.jsp" />
+	</body>
 
 </html>

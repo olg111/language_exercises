@@ -2,23 +2,11 @@
 <%@page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page isELIgnored="false" %>
 
-<!DOCTYPE html>
-<html>
-
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Language exercises </title>
-    <style><%@include file="/styles/style-main.css"%></style>
-
-</head>
-<body>
 
 <header>
 
 	<div>
-		<svg>
+		<svg style="height:70px">
             <defs>
                 <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%"
@@ -27,9 +15,9 @@
                         style="stop-color:rgb(200,200,200);stop-opacity:1" />
                 </linearGradient>
             </defs>
-                <circle cx="50" cy="40" r="30" stroke="#808080" stroke-width="3" fill="url(#grad1)"/>
+                <circle cx="50" cy="35" r="30" stroke="#808080" stroke-width="3" fill="url(#grad1)"/>
 
-                <text fill="#ffffff" font-size="45" font-family="Brush Script MT, cursive" x="25" y="58">LE</text>
+                <text fill="#ffffff" font-size="40" font-family="Brush Script MT, cursive" x="26" y="52">LE</text>
         </svg>
     </div>
 
@@ -40,19 +28,16 @@
     <nav class="topnav">
         <div class="topnav-centered">
             <a href="${pageContext.request.contextPath}/guest">Topics</a>
-            <a href="${pageContext.request.contextPath}/guest">Theory</a>
+            <a href="${pageContext.request.contextPath}/theory">Theory</a>
         </div>
 
 
         <div class="topnav-right">
             <a href="${pageContext.request.contextPath}/loginPage">LOGIN</a>
             <c:if test="${pageContext.request.userPrincipal.name != null}">
-                <a href="javascript:document.getElementById('logout').submit()">Logout</a>
+                <a href="javascript:document.getElementById('logout').submit()">LOGOUT</a>
             </c:if>
 
         </div>
     </nav>
 </header>
-
-</body>
-</html>

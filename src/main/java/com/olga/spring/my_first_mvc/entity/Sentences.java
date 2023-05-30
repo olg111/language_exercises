@@ -1,5 +1,7 @@
 package com.olga.spring.my_first_mvc.entity;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 
 
@@ -12,10 +14,14 @@ public class Sentences {
     @Column(name = "id")
     private int id;
 
+
     @Column(name = "sentence")
+    @NotBlank(message = "Sentence is required field")
     private String sentence;
 
+
     @Column(name = "hint")
+    @NotBlank(message = "Hint is required field")
     private String hint;
 
 

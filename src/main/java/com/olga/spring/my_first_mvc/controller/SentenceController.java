@@ -8,8 +8,10 @@ import com.olga.spring.my_first_mvc.service.topics.TopicsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,19 +57,21 @@ public class SentenceController {
         Sentences sentence = new Sentences();
         Map<Integer, String> sentenceMap = sentencesService.createSentenceMap();
         model.addAttribute("sentence", sentence);
-        //model.addAttribute("sentenceMap", sentenceMap); //не нужен
-        //model.addAttribute("topicId", topicId);
-        //model.addAttribute("exerciseId", exerciseId);
         model.addAttribute("title", "Create a sentence");
 
         return "admin-sentence-creation";
     }
 
     @PostMapping("/admin/saveSentence/{topicId}")
-    public String saveSentence(@PathVariable int topicId,  @ModelAttribute("sentence") Sentences sentences, Model model){
-        sentencesService.saveSentence(sentences);
-        model.addAttribute("topicId", topicId);
+    public String saveSentence(@PathVariable int topicId, @Valid @ModelAttribute("sentence") Sentences sentences,
+                               BindingResult bindingResult){
 
+
+        if(bindingResult.hasErrors()){
+            return "admin-sentence-creation";
+        }
+
+        sentencesService.saveSentence(sentences);
         return "redirect:/admin/showExercises/"+ topicId + "/" + sentences.getExercise().getId();
     }
 

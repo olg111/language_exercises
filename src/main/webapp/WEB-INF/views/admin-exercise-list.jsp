@@ -4,54 +4,62 @@
 <%@page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
+	<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style><%@include file="/styles/style-main.css"%></style>
+    </head>
+
     <body>
+		<!-- HEADER include -->
+    	<jsp:include page="header.jsp" />
 
-        <h2>Exercise list</h2>
-<!--          сообщение когда нету записей (сделать для топиков и сентенсов тоже) -->
-        <br>
+    	<main>
 
-        <table>
-            <tr>
-                <th> <h3> <c:out value="${exById[0].topic.name}"/> </h3> </th>
-            </tr>
+	        <aside>
+	            <h3> <c:out value="${exById[0].topic.name}"/> </h3>
+	            <nav class="sidenav">
+		            <c:forEach var="ex" items="${exById}">
+						<a href="/admin/showExercises/${ex.topic.id}/${ex.id}">${ex.name}</a>
+		            </c:forEach>
+		            <br>
+		            <a class="return" href="${pageContext.request.contextPath}/admin">Return to topics</a>
+	            </nav>
+	        </aside>
 
-            <c:forEach var="ex" items="${exById}">
+			<section>
+				<p> <h3> Dear Admin, here you can create a new exercise </h3> </p>
+	            <c:forEach var="ex" items="${exById}">
 
-                <c:url var="updateButton" value="/admin/updateInfoExercise/${topicId}">
-                    <c:param name="exId" value="${ex.id}"/>
-                </c:url>
+	                <c:url var="updateButton" value="/admin/updateInfoExercise/${topicId}">
+	                    <c:param name="exId" value="${ex.id}"/>
+	                </c:url>
 
-                <tr>
-                    <td>
-                        &bull;   <a href="/admin/showExercises/${ex.topic.id}/${ex.id}">${ex.name}</a>
+	                <div class="flex-container">
+	                    <p>${ex.name}</p>
+	                    <div class="action-container">
 
-                    <td>
-                        <input type="button" value="Update"
-                            onclick="window.location.href = '${updateButton}'"/>
-                    </td>
 
-                    <td>
-                        <form:form action="/admin/deleteExercise/${ex.id}"  method="post">
-                            <input type="submit" value="Delete"/>
-                        </form:form>
-                    </td>
+	                        <input class="input-admin update-button" type="button"  value="Update"
+	                            onclick="window.location.href = '${updateButton}'"/>
 
-                </tr>
+	                        <form:form action="/admin/deleteExercise/${ex.id}"  method="post">
+	                            <input class="input-admin delete-button" type="submit" value="Delete"/>
+	                        </form:form>
+	                    </div>
+					</div>
+	            </c:forEach>
 
-            </c:forEach>
+                <br>
 
-        </table>
-
-        <br>
-        <c:url var="addNewExercise" value="/admin/addNewExercise/${topicId}"></c:url>
-        <input type="button" value="Add"
-            onclick="window.location.href = '${addNewExercise}'"/>
-
-        <br>
-        <br>
-
-        <a href="${pageContext.request.contextPath}/admin">Return to topics</a>
+                <c:url var="addNewExercise" value="/admin/addNewExercise/${topicId}"></c:url>
+                <input class="input-admin add-ok-button" type="button" value="Add"
+                    onclick="window.location.href = '${addNewExercise}'"/>
+            </section>
 
     </body>
+
+		<!-- FOOTER include -->
+        <jsp:include page="footer.jsp" />
 
 </html>

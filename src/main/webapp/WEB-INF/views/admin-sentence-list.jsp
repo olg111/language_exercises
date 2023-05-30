@@ -5,60 +5,63 @@
 <!DOCTYPE html>
 
 <html>
-<body>
+	<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style><%@include file="/styles/style-main.css"%></style>
+    </head>
 
-<h2>Sentence list</h2>
-<br>
+	<body>
+		<!-- HEADER include -->
+    	<jsp:include page="header.jsp" />
 
-<table>
+    	<main>
+    	    <aside>
 
-    <tr>
-        <th> <h3> ${exName} </h3> </th>
+    	        <nav class="sidenav">
+    	            <br>
+					<a class="return" href="${pageContext.request.contextPath}/admin/showExercises/${topicId}">Return to exercises</a>
+    	            <a class="return" href="${pageContext.request.contextPath}/admin">Return to topics</a>
+    	        </nav>
+    	    </aside>
 
-    </tr>
+    	    <section>
+    	            <h3>Dear Admin, here you can create a new sentence</h3>
+                    <h4> ${exName} </h4>
 
-    <c:forEach var="sentById" items="${sentById}">
+					<ol>
+	                    <c:forEach var="sentById" items="${sentById}">
+	                        <c:url var="updateButton" value="/admin/updateInfoSentences/${topicId}/${exerciseId}">
+	                            <c:param name="sentId" value="${sentById.id}"/>
+	                        </c:url>
 
-        <c:url var="updateButton" value="/admin/updateInfoSentences/${topicId}/${exerciseId}">
-            <c:param name="sentId" value="${sentById.id}"/>
-        </c:url>
+							<li>
+	                             <div class="flex-container">
+						            <p class="sentence-item">${sentById.sentence}</p>
 
-       <tr>
-            <td>
-                &bull;    ${sentById.sentence}</a>
-            </td>
+						            <div class="action-container">
 
-            <td>
-                <input type="button" value="Update"
-                       onclick="window.location.href = '${updateButton}'"/>
-            </td>
+		                                <input class="input-admin update-button" type="button" value="Update"
+		                                       onclick="window.location.href = '${updateButton}'"/>
 
-            <td>
-                <form:form action="/admin/deleteSentence/${topicId}/${sentById.id}"  method="post">
-                       <input type="submit" value="Delete"/>
-                </form:form>
-            </td>
+		                                <form:form action="/admin/deleteSentence/${topicId}/${sentById.id}"  method="post">
+		                                       <input class="input-admin delete-button" type="submit" value="Delete"/>
+		                                </form:form>
+		                            </div>
+	                            </div>
+							</li>
+	                    </c:forEach>
+					</ol>
+                    <br>
+                    <c:url var="addNewSentence" value="/admin/addNewSentence/${topicId}/${exerciseId}"></c:url>
+                    <input class="input-admin add-ok-button" type="button" value="Add"
+                           onclick="window.location.href = '${addNewSentence}'"/>
 
-        </tr>
-
-    </c:forEach>
-
-</table>
-
-<br>
-<c:url var="addNewSentence" value="/admin/addNewSentence/${topicId}/${exerciseId}">
-</c:url>
-<input type="button" value="Add"
-       onclick="window.location.href = '${addNewSentence}'"/>
-
-<br><br>
-
-       <a href="${pageContext.request.contextPath}/admin/showExercises/${topicId}">Return to exercises</a>
-
-<br><br>
-
-       <a href="${pageContext.request.contextPath}/admin">Return to topics</a>
+    	    </section>
+    	</main>
 
 </body>
 
+		<!-- FOOTER include -->
+        <jsp:include page="footer.jsp" />
 </html>

@@ -18,28 +18,12 @@
 
 	    <main>
         	<aside>
-        	    <p><h3>Topics</h3></p>
-        	    <nav class="sidenav">
 
-					<c:if test="${fn:length(allTop) < 1 }">
-						<h3> No topics, try again later :( </h3>
-                    </c:if>
-
-                    <c:if test="${fn:length(allTop) > 0 }">
-
-                        <c:forEach var="topic" items="${allTop}">
-
-                            <a href="/guest/showExercises/${topic.id}">${topic.name}</a>
-
-                    	</c:forEach>
-                   </c:if>
-
-        	    </nav>
 
         	</aside>
 
         	<section>
-        			<h3><p> Dear Guest, Choose a topic </p></h3>
+        			<h3><p> This section is under development :( </p></h3>
         	</section>
         </main>
 

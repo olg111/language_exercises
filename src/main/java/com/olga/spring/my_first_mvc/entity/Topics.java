@@ -1,6 +1,8 @@
 package com.olga.spring.my_first_mvc.entity;
 
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,6 +15,7 @@ public class Topics {
     @Column(name = "id")
     private int id;
 
+    @NotBlank(message = "Topic is required field")
     @Column(name = "name")
     private String name;
 
@@ -23,6 +26,7 @@ public class Topics {
 
     public Topics() {
     }
+
 
     public Topics(String name) {
         this.name = name;

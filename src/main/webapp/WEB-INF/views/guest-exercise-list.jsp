@@ -37,7 +37,7 @@
         	</aside>
 
         	<section>
-        	    <p>Dear Guest, Choose an exercise</p>
+        	    <h3><p>Dear Guest, Choose an exercise</p></h3>
         	</section>
 
 

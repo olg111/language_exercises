@@ -6,8 +6,10 @@ import com.olga.spring.my_first_mvc.service.topics.TopicsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -49,10 +51,14 @@ public class ExerciseController {
     }
 
     @PostMapping("/admin/saveExercise")
-    public String saveExercise(@ModelAttribute("exercise") Exercises exercises){
-        exercisesService.saveExercise(exercises);
+    public String saveExercise(@Valid @ModelAttribute("exercise") Exercises exercises, BindingResult bindingResult ){
+        if(bindingResult.hasErrors()){
+            return "admin-exercise-creation";
+        }
 
+        exercisesService.saveExercise(exercises);
         return "redirect:/admin/showExercises/"+ exercises.getTopic().getId() ;
+
     }
 
     @GetMapping("/admin/updateInfoExercise/{topicId}")

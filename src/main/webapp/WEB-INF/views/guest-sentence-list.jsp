@@ -17,15 +17,10 @@
 		<!-- HEADER include -->
         <jsp:include page="header.jsp" />
 
-		<style>
-
-
-
-		</style>
-
 		<main>
 			<aside>
 				<nav class="sidenav">
+					<br>
 					<a class="return"  href="${pageContext.request.contextPath}/guest/showExercises/${topicId}">Return to exercises</a>
                     <a class="return"  href="${pageContext.request.contextPath}/guest">Return to topics</a>
 				</nav>
@@ -34,51 +29,47 @@
 
 			<section>
 
-                		    <c:if test="${fn:length(allListsHashMap) < 1 }">
-                            	<h3> No sentences, try again later :( </h3>
-                            </c:if>
+                <c:if test="${fn:length(allListsHashMap) < 1 }">
+                    <h3> No sentences, try again later :( </h3>
+                </c:if>
 
-                            <p><h4>${exName}</h4></p>
+                <p><h4>${exName}</h4></p>
 
-						<ol>
-                			<c:if test="${fn:length(allListsHashMap) > 0}">
-                			    <c:forEach var="sentenceListHashMap" items="${allListsHashMap}" varStatus="status">
-                			            <li>
-	                                        <div class="sentence-item">
-	                                            <c:forEach var="hashMap" items="${sentenceListHashMap}">
-	                                                <c:choose>
-	                                                    <c:when test="${hashMap.type.equals('text')}">
-	                                                        ${hashMap.content}
-	                                                    </c:when>
-	                                                    <c:when test="${hashMap.type.equals('input')}">
-	                                                        <div>
-	                                                            <input class="answer-${status.getIndex()}" type="text"
-	                                                                   data-rightAnswer="${hashMap.content}"/>
-	                                                            <div class="marker-${status.getIndex()}"></div>
-	                                                        </div>
+				<ol>
+                	<c:if test="${fn:length(allListsHashMap) > 0}">
+                	    <c:forEach var="sentenceListHashMap" items="${allListsHashMap}" varStatus="status">
+                		    <li>
 
-	                                                    </c:when>
-	                                                    <c:when test="${hashMap.type.equals('hint')}">
-	                                                        (${hashMap.content})
-	                                                    </c:when>
-	                                                </c:choose>
-	                                            </c:forEach>
-	                                            <div>
-	                                                <input type="button" class="button" value="check" onclick="checkAnswer(${status.getIndex()})">
-	                                            </div>
-	                                        </div>
-                			            </li>
+                                <div class="flex-container sentence-item">
+                                    <div class="flex-container-guest">
+	                                    <c:forEach var="hashMap" items="${sentenceListHashMap}">
+	                                        <c:choose>
+	                                            <c:when test="${hashMap.type.equals('text')}">
+	                                                ${hashMap.content}
+	                                            </c:when>
+	                                            <c:when test="${hashMap.type.equals('input')}">
+	                                                <div>
+	                                                    <input class="answer-${status.getIndex()}" type="text"
+	                                                           data-rightAnswer="${hashMap.content}"/>
+	                                                    <div class="marker-${status.getIndex()}"></div>
+	                                                </div>
+	                                            </c:when>
+	                                            <c:when test="${hashMap.type.equals('hint')}">
+	                                                (${hashMap.content})
+	                                            </c:when>
+	                                        </c:choose>
+	                                    </c:forEach>
+                                    </div>
+                                    <div class="action-container">
+                                        <input type="button" class="button" value="Check" onclick="checkAnswer(${status.getIndex()})">
+                                    </div>
+                                </div>
+                	        </li>
 
-                			    </c:forEach>
-                			</c:if>
-                		</ol>
+                	    </c:forEach>
+                	</c:if>
+                </ol>
 			</section>
-
-		<br>
-
-
-
-		<br>
 
 
 		<script>
@@ -105,8 +96,9 @@
 		        }
 		    }
 		</script>
-
+		</main>
+	</body>
 		<!-- FOOTER include -->
         <jsp:include page="footer.jsp" />
-	</body>
+
 </html>

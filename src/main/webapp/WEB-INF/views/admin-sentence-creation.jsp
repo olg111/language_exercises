@@ -4,43 +4,57 @@
 <!DOCTYPE html>
 
 <html>
-<body>
+	<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style><%@include file="/styles/style-main.css"%></style>
+    </head>
 
-	<style>
+	<body>
+			<!-- HEADER include -->
+        	<jsp:include page="header.jsp" />
 
-    			.pattern {
-    			  color: red;
-    			  font-weight:bold;
-    			}
-    </style>
+        <main>
 
-	<h2>${title}</h2>
-	<br>
+            <aside>
+				<h3>Return</h3>
+                <nav class="sidenav">
+                    <a href="${pageContext.request.contextPath} /admin/showExercises/${topicId}/${exerciseId}"> Return to sentences</a>
+                </nav>
+            </aside>
 
-	<form:form action="/admin/saveSentence/${topicId}" modelAttribute="sentence">
+            <section>
+            	<h3>${title}</h3>
 
-	    <form:hidden path="id"/>
+				<form:form action="/admin/saveSentence/${topicId}" modelAttribute="sentence">
+	            <form:hidden path="id"/>
 
 
-	    Use pattern <span class="pattern"> "I /{like}/ cats and he /{likes}/ dogs."</span>
+	    Use pattern <span style="color: red; font-weight:bold;"> "I /{like}/ cats and he /{likes}/ dogs."</span>
 
 
 	    <br><br>
 	    Write a new sentence
 	    <form:input path="sentence"/>
-	    Write a hint <span class="pattern"> "to like, to like"</span>
+	    <form:errors path="sentence"/>
+
+	    <br>
+	    Write a hint <span style="color: red; font-weight:bold;"> "to like, to like"</span>
 	    <form:input path="hint"/>
+	    <form:errors path="hint"/>
+
 	    <br><br>
 
 	    <form:hidden path="exercise.id" value="${exerciseId}"/>
 
 	    <input type="submit" value="OK">
 
-	    <br><br>
 
-	   <a href="${pageContext.request.contextPath} /admin/showExercises/${topicId}/${exerciseId}"> Return to sentences</a>
+				</form:form>
 
-	</form:form>
+            </section>
+		<!-- FOOTER include -->
+        <jsp:include page="footer.jsp" />
 
-</body>
+	</body>
 </html>
