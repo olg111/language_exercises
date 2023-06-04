@@ -15,6 +15,8 @@ import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Controller
 public class SentenceController {
@@ -67,9 +69,17 @@ public class SentenceController {
                                BindingResult bindingResult){
 
 
+        String regex = "[/](\\{.*?\\})[/]";
+        Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(sentences.getSentence());
+        if(!matcher.find()){
+            return "admin-sentence-creation";
+
+        }
         if(bindingResult.hasErrors()){
             return "admin-sentence-creation";
         }
+
 
         sentencesService.saveSentence(sentences);
         return "redirect:/admin/showExercises/"+ topicId + "/" + sentences.getExercise().getId();

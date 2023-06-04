@@ -21,9 +21,7 @@
         	    <h3> <c:out value="${exById[0].topic.name}"/> </h3>
 
         	    <nav class="sidenav">
-	                <c:if test="${fn:length(exById) < 1 }">
-	                    <h3> No exercises, try again later :( </h3>
-	                </c:if>
+
 
 	                <c:if test="${fn:length(exById) > 0 }">
 		                <c:forEach var="ex" items="${exById}">
@@ -37,7 +35,13 @@
         	</aside>
 
         	<section>
+        	    <c:if test="${fn:length(exById) > 0 }">
         	    <h3><p>Dear Guest, Choose an exercise</p></h3>
+        	    </c:if>
+
+        	    <c:if test="${fn:length(exById) < 1 }">
+                    <h3> No exercises, try again later :( </h3>
+                </c:if>
         	</section>
 
 

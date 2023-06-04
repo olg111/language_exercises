@@ -30,17 +30,19 @@
 	            <form:hidden path="id"/>
 
 
-	    Use pattern <span style="color: red; font-weight:bold;"> "I /{like}/ cats and he /{likes}/ dogs."</span>
+	    Use pattern <span style="color: red;"> "I_/{like}/_cats_and_he_/{likes}/_dogs."</span>
+	    <Br>
+	    Use a <span style="color: red;">space character</span> instead of "<span style="color: red;">_</span>".
 
 
 	    <br><br>
 	    Write a new sentence
-	    <form:input path="sentence"/>
+	    <form:input class="input-text" path="sentence"/>
 	    <form:errors path="sentence"/>
 
 	    <br>
-	    Write a hint <span style="color: red; font-weight:bold;"> "to like, to like"</span>
-	    <form:input path="hint"/>
+	    Write a hint <span style="color: red;"> "to like, to like"</span>
+	    <form:input class="input-text" path="hint"/>
 	    <form:errors path="hint"/>
 
 	    <br><br>

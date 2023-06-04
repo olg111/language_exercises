@@ -33,10 +33,11 @@
                     <h3> No sentences, try again later :( </h3>
                 </c:if>
 
-                <p><h4>${exName}</h4></p>
+
 
 				<ol>
                 	<c:if test="${fn:length(allListsHashMap) > 0}">
+                	    <p><h4>${exName}</h4></p>
                 	    <c:forEach var="sentenceListHashMap" items="${allListsHashMap}" varStatus="status">
                 		    <li>
 
