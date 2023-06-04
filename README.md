@@ -53,8 +53,7 @@ for this you need to connect **Smart Tomcat**.
 
 ### For administrator:
 
-After the project is launched and opened in the browser add `/admin` path in the address bar.
-
+After the project is launched and opened in the browser. Click on LOGIN.
 ![img.png](assets/browser2.png)
 
 ![img.png](assets/login_page.png)
@@ -64,7 +63,7 @@ Please type the required login and password specified in a class **WebSecurityCo
 
 On "Topic list" page you can add new topic (Add button),
 change topic name (Update button), delete topic (Delete button),
-log out of your account (Logout link).
+log out of your account (LOGOUT).
 
 ![img.png](assets/topic_list.png)
 
@@ -72,7 +71,7 @@ log out of your account (Logout link).
 ---
 
 To go to the page with exercises, you need to click on the topic
-(for example Present Simple).
+(for example Past Simple).
 After clicking, a page "Exercise list" will appear. It that is identical
 in structure to the page described above.
 
@@ -80,7 +79,7 @@ in structure to the page described above.
 
 ---
 To go to the page with sentences, you need to click on the exercise
-(for example Exercise 1 Present Simple).
+(for example Exercise 1 Past Simple).
 After clicking, a page "Sentence list" will appear. It that is identical
 in structure to the page described above.
 
@@ -98,7 +97,7 @@ In the second field you need to enter a hint.
 
 ### For guest:
 
-Click on the link "Guest" and go to the page with a choice of topics,
+Click on the link "Topics" or "Theory" and go to the page with a choice of topics,
 then select one of them and start doing the exercises.
 
 ![img.png](assets/guest.png)
