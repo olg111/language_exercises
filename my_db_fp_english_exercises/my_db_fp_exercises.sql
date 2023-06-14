@@ -24,12 +24,12 @@ DROP TABLE IF EXISTS `exercises`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `exercises` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `exercise_name` varchar(255) DEFAULT NULL,
+  `exercise_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `topic_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `topic_id` (`topic_id`),
   CONSTRAINT `exercises_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `exercises` (
 
 LOCK TABLES `exercises` WRITE;
 /*!40000 ALTER TABLE `exercises` DISABLE KEYS */;
-INSERT INTO `exercises` VALUES (63,'Exercise 1 Present Simple',48),(64,'Exercise 2 Present Simple',48),(65,'Exercise 3 Present Simple',48),(66,'Exercise 1 Past Simple',49),(67,'Exercise 2 Past Simple',49),(68,'Exercise 1 Future Simple',50),(69,'Exercise 2 Future Simple	',50),(76,'Ex 1',53),(77,'Olga',54);
+INSERT INTO `exercises` VALUES (63,'Exercise 1 Present Simple',48),(64,'Exercise 2 Present Simple',48),(65,'Exercise 3 Present Simple',48),(66,'Exercise 1 Past Simple',49),(67,'Exercise 2 Past Simple',49),(68,'Exercise 1 Future Simple',50),(69,'Exercise 2 Future Simple	',50);
 /*!40000 ALTER TABLE `exercises` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-16 18:07:28
+-- Dump completed on 2023-06-14 21:55:59
